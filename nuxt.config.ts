@@ -2,7 +2,25 @@
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineNuxtConfig({
-  modules: ["@nuxt/eslint", "@nuxt/image"],
+  app: {
+    head: {
+      title: "Tyler Higgs - Software Engineer",
+      htmlAttrs: {
+        lang: "en",
+      },
+      link: [
+        {
+          rel: "icon",
+          href: "/gradient-2.svg",
+        },
+        {
+          rel: "apple-touch-icon",
+          href: "/gradient-2.svg",
+        },
+      ],
+    },
+  },
+  modules: ["@nuxt/eslint", "@nuxt/image", "@nuxt/icon"],
   compatibilityDate: "2025-07-15",
   devtools: { enabled: true },
   vite: {

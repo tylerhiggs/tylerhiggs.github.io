@@ -1,21 +1,10 @@
-# Nuxt Minimal Starter
-
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+# [Tyler Higgs' Portfolio](https://tylerhiggs.github.io/)
 
 ## Setup
 
 Make sure to install dependencies:
 
 ```bash
-# npm
-npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
 # bun
 bun install
 ```
@@ -25,51 +14,26 @@ bun install
 Start the development server on `http://localhost:3000`:
 
 ```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
 # bun
 bun run dev
 ```
 
 ## Production
 
-Build the application for production:
+Build the application for production using SSG:
 
 ```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
 # bun
-bun run build
+bun run generate
 ```
 
 Locally preview production build:
 
 ```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
 # bun
 bun run preview
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+## Deploy to GitHub Pages
+
+This project is deployed to GitHub Pages at [https://tylerhiggs.github.io/](https://tylerhiggs.github.io/) as a static, server-side generated site using the workflow defined in [.github/workflows/deploy.yml](.github/workflows/deploy.yml). The workflow is triggered on pushes and pull requests to the `main` branch.
