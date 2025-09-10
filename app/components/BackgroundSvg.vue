@@ -8,6 +8,8 @@
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
       focusable="false"
+      width="100%"
+      preserveAspectRatio="xMidYMid slice"
     >
       <defs>
         <linearGradient id="purpleGradient" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -15,23 +17,21 @@
           <stop offset="100%" stop-color="#8b5cf6" />
         </linearGradient>
       </defs>
-      <g>
-        <g>
-          <!-- Multiple thin lines for the ribbon effect -->
-          <template v-for="i in 24" :key="i">
-            <path
-              :d="`M0,${420 + i * 4} Q400,${220 + i * 2} 700,${
-                420 - i * 6
-              } T1280,${320 + i * 3}`"
-              fill="none"
-              stroke="url(#purpleGradient)"
-              :stroke-width="1.2"
-              :opacity="0.08 + i * 0.03"
-              :style="`animation-delay: ${i * 0.15}s`"
-              class="ribbon-anim"
-            />
-          </template>
-        </g>
+      <g class="w-screen">
+        <!-- Multiple thin lines for the ribbon effect -->
+        <template v-for="i in 24" :key="i">
+          <path
+            :d="`M0,${420 + i * 4} Q400,${220 + i * 2} 700,${
+              420 - i * 6
+            } T1280,${320 + i * 3}`"
+            fill="none"
+            stroke="url(#purpleGradient)"
+            :stroke-width="1.2"
+            :opacity="0.08 + i * 0.03"
+            :style="`animation-delay: ${i * 0.15}s`"
+            class="ribbon-anim"
+          />
+        </template>
       </g>
     </svg>
   </div>

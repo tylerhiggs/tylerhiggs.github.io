@@ -3,7 +3,7 @@
     <div class="absolute inset-0">
       <BackgroundSvg />
     </div>
-    <div class="flex flex-col w-full sm:w-2/3">
+    <div class="flex flex-col w-full px-8 sm:p-0 sm:w-2/3">
       <div class="relative pb-24">
         <h1 class="text-7xl font-bold mt-20 dark:text-teal-50">
           Tyler Higgs - <span class="text-teal-400">Software Engineer</span>
@@ -29,6 +29,23 @@
           </p>
         </div>
       </section>
+      <section>
+        <h2 class="text-5xl font-semibold my-16 dark:text-teal-50">
+          Solo Projects
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-32">
+          <ProjectCard
+            title="Kendo CSS Utilities Cheat Sheet"
+            link="/kendo"
+            image-url="/kendo-example.png"
+            alt-text="Screenshot of Kendo CSS Utilities Cheat Sheet"
+            >Searchable cheatsheet for Kendo CSS utilities using Next.js SSG and
+            Fuse.js fuzzy search, improving accessibility and efficiency for
+            developers. The site is search engine optimized, fully accessible,
+            mobile-friendly, and supports light and dark modes</ProjectCard
+          >
+        </div>
+      </section>
 
       <section>
         <h2 class="text-5xl font-semibold mb-16 dark:text-teal-50">
@@ -38,7 +55,7 @@
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
           <!-- Frontend -->
           <div
-            class="flex flex-col items-center p-6 bg-white dark:bg-sky-900 rounded-lg shadow-sm hover:shadow-xl transition ease-in-out hover:scale-125 duration-300"
+            class="flex flex-col items-center p-6 bg-white dark:bg-sky-900 rounded-lg shadow-sm hover:shadow-xl transition ease-in-out hover:bg-green-300 hover:scale-125 duration-300"
           >
             <Icon name="logos:vue" size="48" class="mb-4" />
             <span class="text-lg font-medium dark:text-teal-50">Vue.js</span>
@@ -186,3 +203,5 @@
     </div>
   </main>
 </template>
+
+<script setup lang="ts"></script>
