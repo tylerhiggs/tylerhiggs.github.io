@@ -2,30 +2,23 @@
   <main
     class="flex items-center flex-col relative overflow-hidden min-h-screen"
   >
-    <div class="fixed h-screen top-0 left-0 right-0">
+    <!-- Floating Calculator Background -->
+    <div class="fixed h-screen top-0 left-0 right-0 pointer-events-none">
       <div
         v-for="(pos, i) in positions"
         :key="i"
-        class="absolute group font-mono"
-        :style="pos.pos"
-        @click="copyToClipboard(pos.popover)"
+        class="absolute opacity-10 text-gray-400"
+        :style="pos"
       >
-        <div
+        <Icon
           name="heroicons:calculator"
-          class="animate-float text-2xl text-zinc-500"
+          class="animate-float"
           :style="{
             animationDelay: `${i * 0.5}s`,
             animationDuration: `${8 + i}s`,
           }"
           size="96"
-        >
-          {{ pos.text }}
-        </div>
-        <div
-          class="invisible group-hover:visible absolute font-mono -top-12 left-1/2 -translate-x-1/2 bg-zinc-800 bg-opacity-70 text-zinc-100 shadow-xl text-xs rounded px-2 py-1 whitespace-nowrap"
-        >
-          {{ pos.popover }}
-        </div>
+        />
       </div>
     </div>
 
@@ -151,78 +144,21 @@
   </main>
 </template>
 
-<script setup lang="ts">
+<script setup>
 const positions = [
-  {
-    text: "k-d-flex",
-    popover: ".flex {\n  display: flex;\n}",
-    pos: { left: "5%", top: "10%" },
-  },
-  {
-    text: "k-p-md",
-    popover: ".p-md {\n  padding: 1rem;\n}",
-    pos: { right: "8%", top: "15%" },
-  },
-  {
-    text: "k-sr-only",
-    popover:
-      ".sr-only {\n  position: absolute;\n  width: 1px;\n  height: 1px;\n  padding: 0;\n  margin: 0;\n  overflow: hidden;\n  clip: rect(0, 0, 0, 0);\n  border: 0;\n}",
-    pos: { left: "15%", top: "40%" },
-  },
-  {
-    text: "k-gap-md",
-    popover: ".gap-md {\n  gap: 1rem;\n}",
-    pos: { right: "20%", top: "35%" },
-  },
-  {
-    text: "k-h-screen",
-    popover: ".h-screen {\n  height: 100vh;\n}",
-    pos: { left: "8%", top: "70%" },
-  },
-  {
-    text: "k-rounded-md",
-    popover: ".rounded-md {\n  border-radius: 0.375rem;\n}",
-    pos: { right: "5%", top: "65%" },
-  },
-  {
-    text: "k-text-underline",
-    popover: ".text-underline {\n  text-decoration: underline;\n}",
-    pos: { left: "25%", top: "80%" },
-  },
-  {
-    text: "k-grid-cols-3",
-    popover:
-      ".grid-cols-3 {\n  grid-template-columns: repeat(3, minmax(0, 1fr));\n}",
-    pos: { right: "25%", top: "85%" },
-  },
-  {
-    text: "k-object-fit-cover",
-    popover: ".object-fit-cover {\n  object-fit: cover;\n}",
-    pos: { left: "2%", top: "50%" },
-  },
-  {
-    text: "k-flex-initial",
-    popover: ".flex-initial {\n  flex: 0 1 auto;\n}",
-    pos: { right: "2%", top: "45%" },
-  },
-  {
-    text: "k-align-items-center",
-    popover: ".align-items-center {\n  align-items: center;\n}",
-    pos: { left: "12%", top: "20%" },
-  },
-  {
-    text: "k-skew-x-30",
-    popover: ".skew-x-30 {\n  transform: skewX(30deg);\n}",
-    pos: { right: "12%", top: "75%" },
-  },
+  { left: "5%", top: "10%" },
+  { right: "8%", top: "15%" },
+  { left: "15%", top: "40%" },
+  { right: "20%", top: "35%" },
+  { left: "8%", top: "70%" },
+  { right: "5%", top: "65%" },
+  { left: "25%", top: "80%" },
+  { right: "25%", top: "85%" },
+  { left: "2%", top: "50%" },
+  { right: "2%", top: "45%" },
+  { left: "12%", top: "20%" },
+  { right: "12%", top: "75%" },
 ];
-const copyToClipboard = async (text: string) => {
-  try {
-    await navigator.clipboard.writeText(text);
-  } catch (err) {
-    console.error("Failed to copy: ", err);
-  }
-};
 </script>
 
 <style scoped>
@@ -238,9 +174,5 @@ const copyToClipboard = async (text: string) => {
 
 .animate-float {
   animation: float ease-in-out infinite;
-}
-
-.animate-float:hover {
-  animation-play-state: paused;
 }
 </style>

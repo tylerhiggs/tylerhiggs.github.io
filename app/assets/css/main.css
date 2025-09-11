@@ -1,5 +1,14 @@
 @import "tailwindcss";
 
 body {
-  @apply bg-teal-100 dark:bg-sky-950;
+  @apply bg-zinc-100 dark:bg-zinc-950 text-zinc-600 dark:text-zinc-200;
+}
+
+p {
+  @apply my-5 leading-7 text-pretty;
+}
+
+b,
+strong {
+  @apply font-bold;
 }
