@@ -146,6 +146,7 @@
                 <TechChip icon="i-lucide:accessibility" title="Accessibility" />
                 <TechChip icon="simple-icons:githubactions" title="CI/CD" />
                 <TechChip icon="logos:firebase-icon" title="Firebase" />
+                <TechChip icon="simple-icons:shadcnui" title="shadcn/ui" />
               </div>
             </div>
           </ProjectCard>

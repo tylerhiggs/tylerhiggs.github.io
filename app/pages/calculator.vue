@@ -144,7 +144,7 @@
   </main>
 </template>
 
-<script setup>
+<script setup lang="ts">
 const positions = [
   { left: "5%", top: "10%" },
   { right: "8%", top: "15%" },

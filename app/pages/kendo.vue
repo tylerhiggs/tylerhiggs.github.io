@@ -6,7 +6,7 @@
       <div
         v-for="(pos, i) in positions"
         :key="i"
-        class="absolute group font-mono"
+        class="absolute font-mono"
         :style="pos.pos"
         @click="copyToClipboard(pos.popover)"
       >
@@ -19,12 +19,14 @@
           }"
           size="96"
         >
-          {{ pos.text }}
-        </div>
-        <div
-          class="invisible group-hover:visible absolute font-mono -top-12 left-1/2 -translate-x-1/2 bg-zinc-800 bg-opacity-70 text-zinc-100 shadow-xl text-xs rounded px-2 py-1 whitespace-nowrap"
-        >
-          {{ pos.popover }}
+          <div class="peer">
+            {{ pos.text }}
+          </div>
+          <div
+            class="invisible peer-hover:visible mt-4 font-mono whitespace-pre bg-zinc-800 bg-opacity-70 text-zinc-100 shadow-xl text-xs rounded px-2 py-1"
+          >
+            {{ pos.popover }}
+          </div>
         </div>
       </div>
     </div>
@@ -35,11 +37,11 @@
       <h1
         class="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
       >
-        Mortgage and Rent Retirement Calculator
+        Kendo CSS Utilities Cheat Sheet
       </h1>
       <div class="flex flex-wrap gap-3 mb-6">
         <a
-          href="https://github.com/tylerhiggs/mortgage-rent-calculator"
+          href="https://github.com/tylerhiggs/kendo-utilities-cheatsheet"
           target="_blank"
           rel="noopener noreferrer"
           class="inline-flex items-center gap-2 px-4 py-2 bg-gray-900 hover:bg-gray-800 hover:scale-105 text-white rounded-full text-sm font-medium transition-colors"
@@ -48,7 +50,7 @@
           View Source
         </a>
         <a
-          href="https://mortgage-and-rent-calculator.web.app/"
+          href="https://kendo-utilities-cheatsheet.vercel.app"
           target="_blank"
           rel="noopener noreferrer"
           class="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 hover:scale-105 text-white rounded-full text-sm font-medium transition-colors"
@@ -57,94 +59,83 @@
           Live Demo
         </a>
       </div>
-      <p>
-        Is it better to rent or buy a home? This is a difficult question given
-        that <strong>better</strong> is a subjective term. This calculator aims
-        to clarify the tradeoffs and surface actionable retirement outcomes for
-        users.
-      </p>
-      <section>
-        <h2 class="text-3xl font-semibold mt-12 mb-4">Motivation</h2>
-        <p>
-          A few years ago, I was trying to decide whether to rent or buy a home.
-          Some tell you that buying is always better since renting causes you to
-          throw away money on rent, while mortgage payments build equity. Others
-          say that renting is better since investments in the stock market will
-          outperform real estate over time. Both sides make compelling
-          arguments, and I found myself confused about which option was actually
-          better for me.
-        </p>
-      </section>
       <section>
         <h2 class="text-3xl font-semibold mt-12 mb-4">
-          Approach - Value of Money
+          My company decided to use Kendo CSS Utilities
         </h2>
         <p>
-          Let's say you have $200k to put down on a house. How
-          <strong>valuable</strong> is having that money for an emergency? Or
-          how about just spending the money on a boat? Or spending a third on a
-          nice car, and investing the rest?
+          Writing custom CSS classes is tedious and time consuming. It also
+          requires a decent understanding of CSS to do well. Even then, it's
+          easy to make mistakes or overlook edge cases. So we decided to use the
+          predefined Kendo CSS Utilities to speed up development and ensure
+          consistency across our codebase.
         </p>
         <p>
-          Because different people prefer to spend their money differently, it
-          is helpful to pick a single point in time to compare the two options.
-          This calculator uses your retirement date as that point in time.
-        </p>
-        <NuxtPicture
-          class="w-full rounded-lg shadow-lg my-4"
-          src="/retirement-charts.png"
-          alt="Comparing Retirement Outcomes of Renting vs Buying a Home"
-          width="1000"
-          sizes="sm:600px md:800px lg:1400px"
-          format="webp"
-          placeholder
-        />
-        <p>
-          The retirement outcome calculations assume the user invests every
-          penny saved by not choosing the other option.
-          <strong>
-            You might not choose to invest all of your money this way, but the
-            value to you of being able to spend it however you choose will be
-            roughly equal to the potential investment gains you could have
-            earned.
-          </strong>
-        </p>
-      </section>
-      <section>
-        <h2 class="text-3xl font-semibold mt-12 mb-4">
-          Short Term Considerations - Monthly Losses
-        </h2>
-        <NuxtPicture
-          class="w-full rounded-lg shadow-lg mb-4"
-          src="/asset-loss.png"
-          alt="Monthly Asset Losses of Buying a Home"
-          width="1000"
-          format="webp"
-          placeholder
-        />
-        <p>
-          In addition to comparing retirement outcomes, this calculator also
-          shows the monthly asset losses of buying a home. Some of your mortgage
-          goes back to you in the form of equity, but there are also many costs
-          that do not. Property taxes, insurance, interest, and HOA take money
-          from your pocket that you will never get back. These costs are
-          summarized in the monthly losses section.
-        </p>
-      </section>
-      <section>
-        <h2 class="text-3xl font-semibold mt-12 mb-4">Math</h2>
-        <p>
+          But the Kendo CSS Utilities do not have very good documentation.
           <a
-            tabindex="0"
-            href="https://github.com/tylerhiggs/mortgage-rent-calculator?tab=readme-ov-file#equations"
-            class="text-blue-600 hover:underline"
+            href="https://www.telerik.com/design-system/docs/utils/get-started/introduction/"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            You can see all the math in the GitHub README here!
+            Try going to their documentation site
           </a>
-          By using math tricks, this calculator avoids summing over every month
-          from now until retirement date. Instead, it uses formulas to calculate
-          the future value of investments and the amortization of a mortgage.
-          This makes the calculator fast and reactive, even on mobile devices.
+          and searching for "display: flex". At the time of writing this there
+          are no results. Even when you do happen to find what you're looking
+          for, site performance is poor and navigation is clunky.
+        </p>
+        <p>
+          So I gave myself a week to build a cheat sheet that would make it easy
+          to look up Kendo CSS Utility classes and copy them to my clipboard. I
+          also wanted to make it visually appealing and fun to use.
+        </p>
+        <p>
+          I also wanted to be able to share this with other developers who might
+          find it useful. So if you find yourself using Kendo CSS Utilities, I
+          hope this cheat sheet helps you out!
+        </p>
+      </section>
+      <section>
+        <h2 class="text-3xl font-semibold mt-12 mb-4">Why not Tailwind?</h2>
+        <p>
+          Why not just use Tailwind CSS, so you can look up utility classes
+          easily on their excellent documentation site or even right in VSCode?
+          Tailwind also automatically removes all unused CSS when building for
+          production.
+        </p>
+        <p>
+          Developers don't always get to choose their tools and that's okay.
+          While bad decisions might have been made in the past, there is no
+          reason to rewrite every line of HTML in your codebase when there are
+          more important things to do.
+        </p>
+      </section>
+      <section>
+        <h2 class="text-3xl font-semibold mt-12 mb-4">Challenges</h2>
+        <p>
+          I only gave myself a week to build this, so I chose the simplest tools
+          I knew well: Next.js, Tailwind, shadcn/ui, and Vercel.
+        </p>
+        <p>
+          But that doesn't mean there weren't challenges. The biggest was
+          getting the actual data. I wanted groups, sub-groups, class names and
+          their CSS properties. So I wrote a script to scrape their
+          documentation.
+        </p>
+        <p>
+          Since the data is fairly static, I scrape the data at build time so
+          that users don't have to wait for this every time they load the page.
+        </p>
+      </section>
+      <section>
+        <h2 class="text-3xl font-semibold mt-12 mb-4">
+          Server Side Generation (SSG)
+        </h2>
+        <p>
+          Since the data is fairly static, Next.js's Server Side Rendering (SSR)
+          would be overkill, rerendering the same page for every user on every
+          request. Instead, I used Static Site Generation (SSG) to generate the
+          page at build time. This makes the site very fast since the HTML is
+          pre-rendered and can be served from a CDN.
         </p>
       </section>
     </div>
@@ -155,64 +146,72 @@
 const positions = [
   {
     text: "k-d-flex",
-    popover: ".flex {\n  display: flex;\n}",
+    popover: ".k-d-flex {\n  display: flex;\n}",
     pos: { left: "5%", top: "10%" },
   },
   {
     text: "k-p-md",
-    popover: ".p-md {\n  padding: 1rem;\n}",
+    popover: ".k-p-md {\n  padding: 0.75rem;\n}",
     pos: { right: "8%", top: "15%" },
   },
   {
     text: "k-sr-only",
-    popover:
-      ".sr-only {\n  position: absolute;\n  width: 1px;\n  height: 1px;\n  padding: 0;\n  margin: 0;\n  overflow: hidden;\n  clip: rect(0, 0, 0, 0);\n  border: 0;\n}",
+    popover: `.k-sr-only {
+  margin: -1px;
+  padding: 0;
+  width: 1px;
+  height: 1px;
+  border-width: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  position: absolute;
+}`,
     pos: { left: "15%", top: "40%" },
   },
   {
     text: "k-gap-md",
-    popover: ".gap-md {\n  gap: 1rem;\n}",
+    popover: ".k-gap-md {\n  gap: 0.75rem;\n}",
     pos: { right: "20%", top: "35%" },
   },
   {
     text: "k-h-screen",
-    popover: ".h-screen {\n  height: 100vh;\n}",
+    popover: ".k-h-screen {\n  height: 100vh;\n}",
     pos: { left: "8%", top: "70%" },
   },
   {
     text: "k-rounded-md",
-    popover: ".rounded-md {\n  border-radius: 0.375rem;\n}",
+    popover: ".k-rounded-md {\n  border-radius: 0.25rem;\n}",
     pos: { right: "5%", top: "65%" },
   },
   {
     text: "k-text-underline",
-    popover: ".text-underline {\n  text-decoration: underline;\n}",
-    pos: { left: "25%", top: "80%" },
+    popover: ".k-text-underline {\n  text-decoration: underline;\n}",
+    pos: { left: "13%", top: "80%" },
   },
   {
     text: "k-grid-cols-3",
     popover:
-      ".grid-cols-3 {\n  grid-template-columns: repeat(3, minmax(0, 1fr));\n}",
-    pos: { right: "25%", top: "85%" },
+      ".k-grid-cols-3 {\n  grid-template-columns: repeat(3, minmax(0, 1fr));\n}",
+    pos: { left: "75%", top: "85%" },
   },
   {
     text: "k-object-fit-cover",
-    popover: ".object-fit-cover {\n  object-fit: cover;\n}",
+    popover: ".k-object-fit-cover {\n  object-fit: cover;\n}",
     pos: { left: "2%", top: "50%" },
   },
   {
     text: "k-flex-initial",
-    popover: ".flex-initial {\n  flex: 0 1 auto;\n}",
+    popover: ".k-flex-initial {\n  flex: initial;\n}",
     pos: { right: "2%", top: "45%" },
   },
   {
     text: "k-align-items-center",
-    popover: ".align-items-center {\n  align-items: center;\n}",
+    popover: ".k-align-items-center {\n  align-items: center;\n}",
     pos: { left: "12%", top: "20%" },
   },
   {
     text: "k-skew-x-30",
-    popover: ".skew-x-30 {\n  transform: skewX(30deg);\n}",
+    popover: ".k-skew-x-30 {\n  transform: skewX(30deg);\n}",
     pos: { right: "12%", top: "75%" },
   },
 ];
