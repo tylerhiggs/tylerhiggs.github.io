@@ -86,6 +86,26 @@
               image-url="/mdc-table-collapse.png"
               alt-text="Screenshot of Extended Markdown Editor"
             >
+              <div class="flex flex-wrap gap-3 z-20 mb-4">
+                <a
+                  href="https://github.com/tylerhiggs/mdxNuxt"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex z-20 items-center gap-2 px-4 py-2 bg-gray-900 hover:bg-gray-800 hover:scale-105 text-white rounded-full text-sm font-medium transition-colors"
+                >
+                  <UIcon name="mdi:github" size="16" />
+                  View Source
+                </a>
+                <a
+                  href="https://md-me-dot-dev.nuxt.dev/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex z-20 items-center gap-2 px-4 py-2 bg-violet-700 hover:bg-violet-800 hover:scale-105 text-white rounded-full text-sm font-medium transition-colors"
+                >
+                  <UIcon name="heroicons:play" size="16" />
+                  Live Demo
+                </a>
+              </div>
               <div class="flex flex-col gap-4">
                 An advanced markdown editor in the browser with Google OAuth,
                 live preview, auto-saving to the cloud, extra components not
@@ -125,6 +145,26 @@
             image-url="/sudoku-preview.png"
             alt-text="Screenshot of Sudoku"
           >
+            <div class="flex flex-wrap gap-3 mb-4 z-20">
+              <a
+                href="https://github.com/tylerhiggs/sudoku-ng"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 z-20 px-4 py-2 bg-gray-900 hover:bg-gray-800 hover:scale-105 text-white rounded-full text-sm font-medium transition-colors"
+              >
+                <UIcon name="mdi:github" size="16" />
+                View Source
+              </a>
+              <a
+                href="https://sudoku-6fbd2.web.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center z-20 gap-2 px-4 py-2 bg-violet-700 hover:bg-violet-800 hover:scale-105 text-white rounded-full text-sm font-medium transition-colors"
+              >
+                <UIcon name="heroicons:play" size="16" />
+                Live Demo
+              </a>
+            </div>
             <div class="flex flex-col gap-4">
               Rust puzzle generator and solver publishes puzzles to a Node
               server which saves them to a Firebase database. Angular frontend
@@ -154,6 +194,26 @@
             image-url="/kendo-syntax.png"
             alt-text="Screenshot of Kendo CSS Utilities Cheat Sheet"
           >
+            <div class="flex flex-wrap gap-3 mb-4 z-20">
+              <a
+                href="https://github.com/tylerhiggs/kendo-utilities-cheatsheet"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center z-20 gap-2 px-4 py-2 bg-gray-900 hover:bg-gray-800 hover:scale-105 text-white rounded-full text-sm font-medium transition-colors"
+              >
+                <UIcon name="mdi:github" size="16" />
+                View Source
+              </a>
+              <a
+                href="https://kendo-utilities-cheatsheet.vercel.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex z-20 items-center gap-2 px-4 py-2 bg-violet-700 hover:bg-violet-800 hover:scale-105 text-white rounded-full text-sm font-medium transition-colors"
+              >
+                <UIcon name="heroicons:play" size="16" />
+                Live Demo
+              </a>
+            </div>
             <div class="flex flex-col gap-4">
               Searchable cheatsheet for Kendo CSS utilities using Next.js SSG
               and Fuse.js fuzzy search, improving accessibility and efficiency
@@ -181,6 +241,26 @@
             image-url="/rent-retirement.png"
             alt-text="Screenshot of Mortgage and Rent Retirement Calculator"
           >
+            <div class="flex flex-wrap gap-3 mb-4 z-20">
+              <a
+                href="https://github.com/tylerhiggs/mortgage-rent-calculator"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex z-20 items-center gap-2 px-4 py-2 bg-gray-900 hover:bg-gray-800 hover:scale-105 text-white rounded-full text-sm font-medium transition-colors"
+              >
+                <UIcon name="mdi:github" size="16" />
+                View Source
+              </a>
+              <a
+                href="https://mortgage-and-rent-calculator.web.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex z-20 items-center gap-2 px-4 py-2 bg-violet-700 hover:bg-violet-800 hover:scale-105 text-white rounded-full text-sm font-medium transition-colors"
+              >
+                <UIcon name="heroicons:play" size="16" />
+                Live Demo
+              </a>
+            </div>
             <div class="flex flex-col gap-4">
               Buy-vs-rent retirement calculator with reactive charts and
               light/dark support. UX to clarify tradeoffs and surface actionable
