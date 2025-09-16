@@ -162,6 +162,8 @@
 <script setup lang="ts">
 definePageMeta({
   title: "Tyler Higgs - Software Engineer",
+  description:
+    "Tyler Higgs is a full stack software engineer specializing in building web applications with a focus on performance, accessibility, and user experience.",
   meta: [
     {
       name: "description",
