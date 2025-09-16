@@ -1,7 +1,8 @@
 <template>
-  <main
-    class="flex items-center flex-col relative overflow-hidden min-h-screen"
-  >
+  <main class="grid grid-cols-12 relative min-h-screen">
+    <PageNav
+      gh-link="https://github.com/tylerhiggs/tylerhiggs.github.io/blob/main/app/pages/calculator.vue"
+    />
     <!-- Floating Calculator Background -->
     <div class="fixed h-screen top-0 left-0 right-0 pointer-events-none">
       <div
@@ -10,7 +11,7 @@
         class="absolute opacity-10 text-gray-400"
         :style="pos"
       >
-        <Icon
+        <UIcon
           name="heroicons:calculator"
           class="animate-float"
           :style="{
@@ -23,10 +24,10 @@
     </div>
 
     <div
-      class="w-full px-0 sm:px-12 py-24 md:w-2/3 lg:w-1/2 relative z-10 **:[p]:text-lg"
+      class="col-span-12 px-12 py-24 md:col-start-3 md:col-span-8 lg:col-start-4 lg:col-span-6 relative z-10 **:[p]:text-lg"
     >
       <h1
-        class="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
+        class="text-5xl font-bold mb-4 bg-gradient-to-r from-violet-700 to-blue-600 bg-clip-text text-transparent"
       >
         Mortgage and Rent Retirement Calculator
       </h1>
@@ -37,7 +38,7 @@
           rel="noopener noreferrer"
           class="inline-flex items-center gap-2 px-4 py-2 bg-gray-900 hover:bg-gray-800 hover:scale-105 text-white rounded-full text-sm font-medium transition-colors"
         >
-          <Icon name="mdi:github" size="16" />
+          <UIcon name="mdi:github" size="16" />
           View Source
         </a>
         <a
@@ -46,7 +47,7 @@
           rel="noopener noreferrer"
           class="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 hover:scale-105 text-white rounded-full text-sm font-medium transition-colors"
         >
-          <Icon name="heroicons:play" size="16" />
+          <UIcon name="heroicons:play" size="16" />
           Live Demo
         </a>
       </div>
@@ -56,8 +57,10 @@
         to clarify the tradeoffs and surface actionable retirement outcomes for
         users.
       </p>
-      <section>
-        <h2 class="text-3xl font-semibold mt-12 mb-4">Motivation</h2>
+      <section ref="motivation">
+        <h2 id="motivation" class="text-3xl font-semibold mt-12 mb-4">
+          Motivation
+        </h2>
         <p>
           A few years ago, I was trying to decide whether to rent or buy a home.
           Some tell you that buying is always better since renting causes you to
@@ -68,8 +71,8 @@
           better for me.
         </p>
       </section>
-      <section>
-        <h2 class="text-3xl font-semibold mt-12 mb-4">
+      <section ref="approach">
+        <h2 id="approach" class="text-3xl font-semibold mt-12 mb-4">
           Approach - Value of Money
         </h2>
         <p>
@@ -84,7 +87,7 @@
           This calculator uses your retirement date as that point in time.
         </p>
         <NuxtPicture
-          class="w-full rounded-lg shadow-lg my-4"
+          class="w-full rounded-lg **:rounded-lg shadow-lg my-4"
           src="/retirement-charts.png"
           alt="Comparing Retirement Outcomes of Renting vs Buying a Home"
           width="1000"
@@ -103,12 +106,15 @@
           </strong>
         </p>
       </section>
-      <section>
-        <h2 class="text-3xl font-semibold mt-12 mb-4">
+      <section ref="short-term-considerations">
+        <h2
+          id="short-term-considerations"
+          class="text-3xl font-semibold mt-12 mb-4"
+        >
           Short Term Considerations - Monthly Losses
         </h2>
         <NuxtPicture
-          class="w-full rounded-lg shadow-lg mb-4"
+          class="w-full rounded-lg **:rounded-lg shadow-lg mb-4"
           src="/asset-loss.png"
           alt="Monthly Asset Losses of Buying a Home"
           width="1000"
@@ -124,13 +130,15 @@
           summarized in the monthly losses section.
         </p>
       </section>
-      <section>
-        <h2 class="text-3xl font-semibold mt-12 mb-4">Math</h2>
+      <section ref="math">
+        <h2 id="math" class="text-3xl font-semibold mt-12 mb-4">Math</h2>
         <p>
           <a
             tabindex="0"
             href="https://github.com/tylerhiggs/mortgage-rent-calculator?tab=readme-ov-file#equations"
             class="text-blue-600 hover:underline"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             You can see all the math in the GitHub README here!
           </a>
@@ -141,10 +149,18 @@
         </p>
       </section>
     </div>
+    <div
+      class="lg:flex lg:flex-col sticky top-0 hidden max-h-screen md:col-span-2"
+    >
+      <PageOutline :items="outlineItems" />
+    </div>
   </main>
 </template>
 
 <script setup lang="ts">
+import { useElementVisibility } from "@vueuse/core";
+import type { Item } from "~/types";
+
 const positions = [
   { left: "5%", top: "10%" },
   { right: "8%", top: "15%" },
@@ -159,6 +175,49 @@ const positions = [
   { left: "12%", top: "20%" },
   { right: "12%", top: "75%" },
 ];
+const motivationSection = useTemplateRef("motivation");
+const approachSection = useTemplateRef("approach");
+const shortTermConsiderationsSection = useTemplateRef(
+  "short-term-considerations"
+);
+const mathSection = useTemplateRef("math");
+
+const motivationSectionVisible = useElementVisibility(motivationSection);
+const approachSectionVisible = useElementVisibility(approachSection);
+const shortTermConsiderationsSectionVisible = useElementVisibility(
+  shortTermConsiderationsSection
+);
+const mathSectionVisible = useElementVisibility(mathSection);
+
+const outlineItems = computed(
+  () =>
+    [
+      {
+        id: "motivation",
+        label: "Motivation",
+        items: [],
+        isVisible: motivationSectionVisible.value,
+      },
+      {
+        id: "approach",
+        label: "Approach - Value of Money",
+        items: [],
+        isVisible: approachSectionVisible.value,
+      },
+      {
+        id: "short-term-considerations",
+        label: "Short Term Considerations - Monthly Losses",
+        items: [],
+        isVisible: shortTermConsiderationsSectionVisible.value,
+      },
+      {
+        id: "math",
+        label: "Math",
+        items: [],
+        isVisible: mathSectionVisible.value,
+      },
+    ] as Item[]
+);
 </script>
 
 <style scoped>

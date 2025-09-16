@@ -1,7 +1,8 @@
 <template>
-  <main
-    class="flex items-center flex-col relative overflow-hidden min-h-screen"
-  >
+  <main class="grid grid-cols-12 relative min-h-screen">
+    <PageNav
+      gh-link="https://github.com/tylerhiggs/tylerhiggs.github.io/blob/main/app/pages/sudoku.vue"
+    />
     <div class="fixed h-screen top-0 left-0 right-0 pointer-events-none">
       <div v-for="(pos, i) in positions" :key="i" class="absolute" :style="pos">
         <div class="animate-float">
@@ -14,10 +15,10 @@
     </div>
 
     <div
-      class="w-full px-0 sm:px-12 py-24 md:w-2/3 lg:w-1/2 relative z-10 **:[p]:text-lg"
+      class="col-span-12 px-12 py-24 md:col-start-3 md:col-span-8 lg:col-start-4 lg:col-span-6 relative z-10 **:[p]:text-lg"
     >
       <h1
-        class="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
+        class="text-5xl font-bold mb-4 bg-gradient-to-r from-violet-700 to-blue-600 bg-clip-text text-transparent"
       >
         Sudoku
       </h1>
@@ -28,16 +29,16 @@
           rel="noopener noreferrer"
           class="inline-flex items-center gap-2 px-4 py-2 bg-gray-900 hover:bg-gray-800 hover:scale-105 text-white rounded-full text-sm font-medium transition-colors"
         >
-          <Icon name="mdi:github" size="16" />
+          <UIcon name="mdi:github" size="16" />
           View Source
         </a>
         <a
           href="https://sudoku-6fbd2.web.app/"
           target="_blank"
           rel="noopener noreferrer"
-          class="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 hover:scale-105 text-white rounded-full text-sm font-medium transition-colors"
+          class="inline-flex items-center gap-2 px-4 py-2 bg-violet-700 hover:bg-violet-800 hover:scale-105 text-white rounded-full text-sm font-medium transition-colors"
         >
-          <Icon name="heroicons:play" size="16" />
+          <UIcon name="heroicons:play" size="16" />
           Live Demo
         </a>
       </div>
@@ -61,8 +62,10 @@
         class="my-4 aspect-video w-full rounded-lg border border-neutral-200 dark:border-neutral-700"
         allowfullscreen
       ></iframe>
-      <section>
-        <h2 class="text-3xl font-semibold mt-12 mb-4">Angular Frontend</h2>
+      <section ref="frontend">
+        <h2 id="frontend" class="text-3xl font-semibold mt-12 mb-4">
+          Angular Frontend
+        </h2>
         <p>
           The currently selected row and column are highlighted to make it
           easier to see where you are on the board. The app also highlights all
@@ -115,8 +118,10 @@
           responsive, working well on both desktop and mobile devices.
         </p>
       </section>
-      <section>
-        <h2 class="text-3xl font-semibold mt-12 mb-4">First Try</h2>
+      <section ref="first-try">
+        <h2 id="first-try" class="text-3xl font-semibold mt-12 mb-4">
+          First Try
+        </h2>
         <a
           href="https://github.com/tylerhiggs/MySudoku"
           target="_blank"
@@ -192,8 +197,8 @@
           ecosystem to create a more efficient and performant solution.
         </p>
       </section>
-      <section>
-        <h2 class="text-3xl font-semibold mt-12 mb-4">
+      <section ref="rust">
+        <h2 id="rust" class="text-3xl font-semibold mt-12 mb-4">
           Generate Puzzles with Rust
         </h2>
         <p>
@@ -202,6 +207,8 @@
           subset of solving techniques.
           <a
             href="https://www.conceptispuzzles.com/index.aspx?uri=puzzle/sudoku/techniques"
+            target="_blank"
+            rel="noopener noreferrer"
             class="text-blue-600 hover:underline"
             >Conceptis Puzzles has a great list of techniques</a
           >. I chose to use a backtracking algorithm to generate puzzles, which
@@ -215,8 +222,10 @@
           puzzle, while fewer filled cells lead to a harder puzzle.
         </p>
       </section>
-      <section>
-        <h2 class="text-3xl font-semibold mt-12 mb-4">Node Server</h2>
+      <section ref="server">
+        <h2 id="server" class="text-3xl font-semibold mt-12 mb-4">
+          Node Server
+        </h2>
         <p>
           Keeping this app as simple as possible was a top priority for me. I
           knew I could quickly set up a Node + Express server and have the rust
@@ -235,8 +244,10 @@
           them to the remote database.
         </p>
       </section>
-      <section>
-        <h2 class="text-3xl font-semibold mt-12 mb-4">Firebase Database</h2>
+      <section ref="database">
+        <h2 id="database" class="text-3xl font-semibold mt-12 mb-4">
+          Firebase Database
+        </h2>
         <p>
           I chose Firebase for the database because it is easy to set up and
           manage, and it has a generous free tier. The Firebase Realtime
@@ -253,8 +264,10 @@
           uniqueness.
         </p>
       </section>
-      <section>
-        <h2 class="text-3xl font-semibold mt-12 mb-4">Client Storage</h2>
+      <section ref="client-storage">
+        <h2 id="client-storage" class="text-3xl font-semibold mt-12 mb-4">
+          Client Storage
+        </h2>
         <p>
           To minimize the number of requests to the database, the Angular app
           stores puzzles in the browser's local storage. When the user starts a
@@ -271,10 +284,18 @@
         </p>
       </section>
     </div>
+    <div
+      class="lg:flex lg:flex-col sticky top-0 hidden max-h-screen md:col-span-2"
+    >
+      <PageOutline :items="outlineItems" />
+    </div>
   </main>
 </template>
 
 <script setup lang="ts">
+import { useElementVisibility } from "@vueuse/core";
+import type { Item } from "~/types";
+
 const positions = [
   { left: "5%", top: "10%" },
   { right: "8%", top: "15%" },
@@ -289,6 +310,62 @@ const positions = [
   { left: "12%", top: "20%" },
   { right: "12%", top: "75%" },
 ];
+
+const frontendSection = useTemplateRef("frontend");
+const firstTrySection = useTemplateRef("first-try");
+const rustSection = useTemplateRef("rust");
+const serverSection = useTemplateRef("server");
+const databaseSection = useTemplateRef("database");
+const clientStorageSection = useTemplateRef("client-storage");
+
+const frontendSectionVisible = useElementVisibility(frontendSection);
+const firstTrySectionVisible = useElementVisibility(firstTrySection);
+const rustSectionVisible = useElementVisibility(rustSection);
+const serverSectionVisible = useElementVisibility(serverSection);
+const databaseSectionVisible = useElementVisibility(databaseSection);
+const clientStorageSectionVisible = useElementVisibility(clientStorageSection);
+
+const outlineItems = computed(
+  () =>
+    [
+      {
+        id: "frontend",
+        label: "Angular Frontend",
+        items: [],
+        isVisible: frontendSectionVisible.value,
+      },
+      {
+        id: "first-try",
+        label: "First Try - Swift App",
+        items: [],
+        isVisible: firstTrySectionVisible.value,
+      },
+      {
+        id: "rust",
+        label: "Generate Puzzles with Rust",
+        items: [],
+        isVisible: rustSectionVisible.value,
+      },
+      {
+        id: "server",
+        label: "Node Server",
+        items: [],
+        isVisible: serverSectionVisible.value,
+      },
+      {
+        id: "database",
+        label: "Firebase Database",
+        items: [],
+        isVisible: databaseSectionVisible.value,
+      },
+      {
+        id: "client-storage",
+        label: "Client Storage",
+        items: [],
+        isVisible: clientStorageSectionVisible.value,
+      },
+    ] as Item[]
+);
 </script>
 
 <style scoped>

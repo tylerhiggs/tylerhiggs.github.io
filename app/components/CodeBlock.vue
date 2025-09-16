@@ -12,15 +12,15 @@
         tabindex="0"
         @click="copyToClipboard"
       >
-        <Icon
+        <UIcon
           v-if="copied"
           name="heroicons:clipboard-document-check"
           size="16"
         />
-        <Icon v-else name="heroicons:clipboard-document" size="16" />
+        <UIcon v-else name="heroicons:clipboard-document" size="16" />
       </button>
       <div v-if="name" class="px-4 pt-3 pb-0 text-sm text-gray-400 font-mono">
-        <Icon v-if="icon" :name="icon" /> {{ name }}
+        <UIcon v-if="icon" :name="icon" /> {{ name }}
       </div>
       <div v-html="highlightedHtml"></div>
     </div>

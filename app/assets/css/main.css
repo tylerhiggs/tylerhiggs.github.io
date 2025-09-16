@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "@nuxt/ui";
 
 body {
   @apply bg-zinc-100 dark:bg-zinc-950 text-zinc-600 dark:text-zinc-200;
@@ -8,7 +9,16 @@ p {
   @apply my-5 leading-7 text-pretty;
 }
 
-b,
-strong {
-  @apply font-bold;
+p > b,
+p > strong {
+  @apply font-extrabold text-violet-600 dark:text-violet-400;
+}
+
+code:not(pre) {
+  @apply font-mono bg-zinc-200 dark:bg-zinc-800 rounded px-1 py-0.5 text-sm;
+}
+
+p > a,
+code > a {
+  @apply text-violet-600 dark:text-violet-400 underline underline-offset-4 hover:text-violet-800 dark:hover:text-violet-300;
 }

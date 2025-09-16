@@ -28,7 +28,7 @@
       </h3>
       <p class="mt-2 text-pretty text-zinc-500 dark:text-zinc-300"><slot /></p>
     </div>
-    <Icon
+    <UIcon
       class="invisible group-hover:visible absolute top-4 right-4 text-violet-300 w-6 h-6"
       name="heroicons:arrow-up-right"
     />

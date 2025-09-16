@@ -1,7 +1,8 @@
 <template>
-  <main
-    class="flex items-center flex-col relative overflow-hidden min-h-screen"
-  >
+  <main class="grid grid-cols-12 relative min-h-screen">
+    <PageNav
+      gh-link="https://github.com/tylerhiggs/tylerhiggs.github.io/blob/main/app/pages/kendo.vue"
+    />
     <div class="fixed h-screen top-0 left-0 right-0">
       <div
         v-for="(pos, i) in positions"
@@ -32,10 +33,10 @@
     </div>
 
     <div
-      class="w-full px-0 sm:px-12 py-24 md:w-2/3 lg:w-1/2 relative z-10 **:[p]:text-lg"
+      class="col-span-12 px-12 py-24 md:col-start-3 md:col-span-8 lg:col-start-4 lg:col-span-6 relative z-10 **:[p]:text-lg"
     >
       <h1
-        class="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
+        class="text-5xl font-bold mb-4 bg-gradient-to-r from-violet-700 to-blue-600 bg-clip-text text-transparent"
       >
         Kendo CSS Utilities Cheat Sheet
       </h1>
@@ -46,21 +47,21 @@
           rel="noopener noreferrer"
           class="inline-flex items-center gap-2 px-4 py-2 bg-gray-900 hover:bg-gray-800 hover:scale-105 text-white rounded-full text-sm font-medium transition-colors"
         >
-          <Icon name="mdi:github" size="16" />
+          <UIcon name="mdi:github" size="16" />
           View Source
         </a>
         <a
           href="https://kendo-utilities-cheatsheet.vercel.app"
           target="_blank"
           rel="noopener noreferrer"
-          class="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 hover:scale-105 text-white rounded-full text-sm font-medium transition-colors"
+          class="inline-flex items-center gap-2 px-4 py-2 bg-violet-700 hover:bg-violet-800 hover:scale-105 text-white rounded-full text-sm font-medium transition-colors"
         >
-          <Icon name="heroicons:play" size="16" />
+          <UIcon name="heroicons:play" size="16" />
           Live Demo
         </a>
       </div>
-      <section>
-        <h2 class="text-3xl font-semibold mt-12 mb-4">
+      <section ref="motivation">
+        <h2 id="motivation" class="text-3xl font-semibold mt-12 mb-4">
           My company decided to use Kendo CSS Utilities
         </h2>
         <p>
@@ -94,8 +95,10 @@
           hope this cheat sheet helps you out!
         </p>
       </section>
-      <section>
-        <h2 class="text-3xl font-semibold mt-12 mb-4">Why not Tailwind?</h2>
+      <section ref="tools">
+        <h2 id="tools" class="text-3xl font-semibold mt-12 mb-4">
+          Why not Tailwind?
+        </h2>
         <p>
           Why not just use Tailwind CSS, so you can look up utility classes
           easily on their excellent documentation site or even right in VSCode?
@@ -109,8 +112,10 @@
           more important things to do.
         </p>
       </section>
-      <section>
-        <h2 class="text-3xl font-semibold mt-12 mb-4">Challenges</h2>
+      <section ref="challenges">
+        <h2 id="challenges" class="text-3xl font-semibold mt-12 mb-4">
+          Challenges
+        </h2>
         <p>
           I only gave myself a week to build this, so I chose the simplest tools
           I knew well: Next.js, Tailwind, shadcn/ui, and Vercel.
@@ -126,8 +131,8 @@
           that users don't have to wait for this every time they load the page.
         </p>
       </section>
-      <section>
-        <h2 class="text-3xl font-semibold mt-12 mb-4">
+      <section ref="ssg">
+        <h2 id="ssg" class="text-3xl font-semibold mt-12 mb-4">
           Server Side Generation (SSG)
         </h2>
         <p>
@@ -139,10 +144,18 @@
         </p>
       </section>
     </div>
+    <div
+      class="lg:flex lg:flex-col sticky top-0 hidden max-h-screen md:col-span-2 pointer-events-none"
+    >
+      <PageOutline :items="outlineItems" />
+    </div>
   </main>
 </template>
 
 <script setup lang="ts">
+import { useElementVisibility } from "@vueuse/core";
+import type { Item } from "~/types";
+
 const positions = [
   {
     text: "k-d-flex",
@@ -222,6 +235,45 @@ const copyToClipboard = async (text: string) => {
     console.error("Failed to copy: ", err);
   }
 };
+const motivationSection = useTemplateRef("motivation");
+const toolsSection = useTemplateRef("tools");
+const challengesSection = useTemplateRef("challenges");
+const ssgSection = useTemplateRef("ssg");
+
+const motivationSectionVisible = useElementVisibility(motivationSection);
+const toolsSectionVisible = useElementVisibility(toolsSection);
+const challengesSectionVisible = useElementVisibility(challengesSection);
+const ssgSectionVisible = useElementVisibility(ssgSection);
+
+const outlineItems = computed(
+  () =>
+    [
+      {
+        id: "motivation",
+        label: "My company decided to use Kendo CSS Utilities",
+        items: [],
+        isVisible: motivationSectionVisible.value,
+      },
+      {
+        id: "tools",
+        label: "Why not Tailwind?",
+        items: [],
+        isVisible: toolsSectionVisible.value,
+      },
+      {
+        id: "challenges",
+        label: "Challenges",
+        items: [],
+        isVisible: challengesSectionVisible.value,
+      },
+      {
+        id: "ssg",
+        label: "Server Side Generation (SSG)",
+        items: [],
+        isVisible: ssgSectionVisible.value,
+      },
+    ] as Item[]
+);
 </script>
 
 <style scoped>
