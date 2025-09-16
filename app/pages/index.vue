@@ -1,5 +1,55 @@
 <template>
   <main class="min-h-screen flex justify-center relative pb-24">
+    <nav class="fixed top-0 left-0 w-full z-50">
+      <div class="mx-auto px-4 sm:px-6">
+        <div class="flex items-center justify-end h-16">
+          <div class="flex items-center space-x-2">
+            <UTooltip text="GitHub (opens in a new tab)">
+              <a
+                href="https://github.com/tylerhiggs"
+                target="_blank"
+                tabindex="0"
+                rel="noopener noreferrer"
+                class="group inline-flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium text-pretty hover:bg-zinc-100 dark:hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-violet-500"
+                aria-label="GitHub (opens in a new tab)"
+                title="GitHub"
+              >
+                <UIcon name="mdi:github" class="size-8" />
+              </a>
+            </UTooltip>
+
+            <UTooltip text="LinkedIn (opens in a new tab)">
+              <a
+                href="https://www.linkedin.com/in/tyler-higgs-bba80614a/"
+                target="_blank"
+                tabindex="0"
+                rel="noopener noreferrer"
+                class="group inline-flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium text-pretty hover:bg-zinc-100 dark:hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-violet-500"
+                aria-label="LinkedIn (opens in a new tab)"
+                title="LinkedIn"
+              >
+                <Icon name="mdi:linkedin" class="size-8" />
+              </a>
+            </UTooltip>
+
+            <UTooltip text="Resume (opens in a new tab)">
+              <a
+                href="/TylerHiggs-resume.pdf"
+                target="_blank"
+                tabindex="0"
+                rel="noopener noreferrer"
+                class="group inline-flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium text-pretty hover:bg-zinc-100 dark:hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-violet-500"
+                aria-label="Resume (opens in a new tab)"
+                title="Resume"
+              >
+                <UIcon name="heroicons:document-text" class="size-8" />
+              </a>
+            </UTooltip>
+          </div>
+        </div>
+      </div>
+    </nav>
+
     <div class="flex flex-col w-full px-8 sm:p-0 sm:w-2/3 z-10">
       <div class="relative pb-24">
         <h1 class="sm:text-9xl text-7xl font-bold mt-20">

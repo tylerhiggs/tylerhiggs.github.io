@@ -13,6 +13,10 @@ export default defineNuxtConfig({
           rel: "icon",
           href: "/favicon.svg",
         },
+        {
+          rel: "apple-touch-icon",
+          href: "/favicon.svg",
+        },
       ],
     },
   },
