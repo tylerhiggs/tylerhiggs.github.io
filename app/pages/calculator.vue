@@ -51,6 +51,21 @@
           Live Demo
         </a>
       </div>
+      <div class="flex flex-wrap gap-2 mt-4">
+        <TechChip icon="logos:nuxt-icon" title="Nuxt" />
+        <TechChip icon="logos:vue" title="Vue" />
+        <TechChip icon="logos:oauth" title="OAuth" />
+        <TechChip icon="file-icons:sqlite" title="SQLite" />
+        <TechChip icon="simple-icons:drizzle" title="Drizzle ORM" />
+        <TechChip icon="logos:tailwindcss-icon" title="Tailwind CSS" />
+        <TechChip icon="logos:typescript-icon" title="TypeScript" />
+        <TechChip icon="logos:cloudflare-icon" title="Cloudflare" />
+        <TechChip icon="i-heroicons:magnifying-glass" title="SEO" />
+        <TechChip icon="i-heroicons:server-stack" title="SSR" />
+        <TechChip icon="i-heroicons:device-phone-mobile" title="Responsive" />
+        <TechChip icon="i-lucide:accessibility" title="Accessibility" />
+        <TechChip icon="simple-icons:githubactions" title="CI/CD" />
+      </div>
       <p>
         Is it better to rent or buy a home? This is a difficult question given
         that <strong>better</strong> is a subjective term. This calculator aims

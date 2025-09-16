@@ -42,6 +42,17 @@
           Live Demo
         </a>
       </div>
+      <div class="flex flex-wrap gap-2 mt-4">
+        <TechChip icon="logos:rust" title="Rust" />
+        <TechChip icon="logos:angular-icon" title="Angular" />
+        <TechChip icon="logos:firebase-icon" title="Firebase" />
+        <TechChip icon="logos:nodejs-icon" title="Node.js" />
+        <TechChip icon="heroicons:circle-stack" title="IndexedDB" />
+        <TechChip icon="logos:tailwindcss-icon" title="Tailwind CSS" />
+        <TechChip icon="logos:typescript-icon" title="TypeScript" />
+        <TechChip icon="i-heroicons:device-phone-mobile" title="Responsive" />
+        <TechChip icon="simple-icons:githubactions" title="CI/CD" />
+      </div>
       <p>
         I enjoy a relaxing game of Sudoku, but I just wanted to play the game
         without ads or tracking. So, I built a simple Sudoku web app that lets

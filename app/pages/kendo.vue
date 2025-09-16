@@ -24,7 +24,7 @@
             {{ pos.text }}
           </div>
           <div
-            class="invisible peer-hover:visible mt-4 font-mono whitespace-pre bg-zinc-800 bg-opacity-70 text-zinc-100 shadow-xl text-xs rounded px-2 py-1"
+            class="hidden peer-hover:flex mt-4 font-mono whitespace-pre bg-zinc-800 bg-opacity-70 text-zinc-100 shadow-xl text-xs rounded px-2 py-1"
           >
             {{ pos.popover }}
           </div>
@@ -59,6 +59,17 @@
           <UIcon name="heroicons:play" size="16" />
           Live Demo
         </a>
+      </div>
+      <div class="flex flex-wrap gap-2 mt-4">
+        <TechChip icon="logos:nextjs-icon" title="Next.js" />
+        <TechChip icon="logos:tailwindcss-icon" title="Tailwind CSS" />
+        <TechChip icon="logos:typescript-icon" title="TypeScript" />
+        <TechChip icon="logos:vercel-icon" title="Vercel" />
+        <TechChip icon="logos:react" title="React" />
+        <TechChip icon="i-heroicons:magnifying-glass" title="SEO" />
+        <TechChip icon="i-heroicons:server-stack" title="SSG" />
+        <TechChip icon="i-heroicons:device-phone-mobile" title="Responsive" />
+        <TechChip icon="i-lucide:accessibility" title="Accessibility" />
       </div>
       <section ref="motivation">
         <h2 id="motivation" class="text-3xl font-semibold mt-12 mb-4">

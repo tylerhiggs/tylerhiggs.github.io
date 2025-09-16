@@ -20,11 +20,15 @@ const journeySection = useTemplateRef("journeySection");
 const version1Section = useTemplateRef("version1");
 const version2Section = useTemplateRef("version2");
 const version3Section = useTemplateRef("version3");
+const featuresSection = useTemplateRef("features");
+const mdEditorSection = useTemplateRef("md-editor");
 
 const journeyVisible = useElementVisibility(journeySection);
 const version1Visible = useElementVisibility(version1Section);
 const version2Visible = useElementVisibility(version2Section);
 const version3Visible = useElementVisibility(version3Section);
+const featuresVisible = useElementVisibility(featuresSection);
+const mdEditorVisible = useElementVisibility(mdEditorSection);
 
 const outlineItems = computed(() => {
   return [
@@ -51,6 +55,19 @@ const outlineItems = computed(() => {
           label: "Version 3: Markdown + Nuxt",
           items: [],
           isVisible: version3Visible.value,
+        },
+      ],
+    },
+    {
+      id: "features",
+      label: "Features",
+      isVisible: featuresVisible.value,
+      items: [
+        {
+          id: "md-editor",
+          label: "Markdown Editor",
+          items: [],
+          isVisible: mdEditorVisible.value,
         },
       ],
     },
@@ -150,7 +167,10 @@ const content = shallowRef("Here is an example of editable content");
           <div
             class="bg-violet-100 dark:bg-violet-950/50 text-lg text-violet-500 dark:text-violet-200 p-2 flex items-center border border-violet-300 dark:border-violet-800/50 rounded-lg my-4"
           >
-            <UIcon name="heroicons:light-bulb" size="32" class="inline mr-3" />
+            <UIcon
+              name="heroicons:light-bulb"
+              class="inline size-32 sm:size-24 lg:size-20 xl:size-16 mr-3"
+            />
             <span>
               <strong>YAGNI</strong> (You Aren't Gonna Need It): Overengineering
               kills productivity. Prefer the simplest design until complexity
@@ -303,13 +323,21 @@ const content = shallowRef("Here is an example of editable content");
               rel="noopener noreferrer"
               >shiki</a
             >. It works on all browsers and is accessible. Since you cannot
-            change the color of individual characters in a textarea, I make the
-            textarea transparent and place a syntax highlighted
-            <code>pre</code> behind it. This allows you to see the syntax
-            highlighting while you type. The alternative would be to use a
-            contenteditable div, but that is a mess
-            <a href="/#version-2">as we talked about earlier</a>.
+            change the color of individual characters in a
+            <code>textarea</code>, I make the <code>textarea</code> transparent
+            and place a syntax highlighted <code>pre</code> behind it. This
+            allows you to see the syntax highlighting while you type. The
+            alternative would be to use a contenteditable div, but that is a
+            mess <a href="/#version-2">as we talked about earlier</a>.
+            <a
+              href="https://shiki.style/guide/#playground"
+              target="_blank"
+              rel="noopener noreferrer"
+              >This is how it works on the shiki docs</a
+            >. Here is an example of an editable TypeScript code block using
+            this technique:
           </p>
+          <CodeEditor />
         </section>
       </section>
     </div>

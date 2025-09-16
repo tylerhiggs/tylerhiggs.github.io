@@ -158,3 +158,21 @@
     </div>
   </main>
 </template>
+
+<script setup lang="ts">
+definePageMeta({
+  title: "Tyler Higgs - Software Engineer",
+  meta: [
+    {
+      name: "description",
+      content:
+        "Tyler Higgs is a full stack software engineer specializing in building web applications with a focus on performance, accessibility, and user experience.",
+    },
+    {
+      name: "keywords",
+      content:
+        "Tyler Higgs, Software Engineer, Full Stack Developer, Web Developer, Nuxt, Vue, TypeScript, Tailwind CSS, Cloudflare, Accessibility, SEO, SSR",
+    },
+  ],
+});
+</script>
