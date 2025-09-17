@@ -3,7 +3,9 @@
     <PageNav
       gh-link="https://github.com/tylerhiggs/tylerhiggs.github.io/blob/main/app/pages/sudoku.vue"
     />
-    <div class="fixed h-screen top-0 left-0 right-0 pointer-events-none">
+    <div
+      class="fixed invisible sm:visible h-screen top-0 left-0 right-0 pointer-events-none"
+    >
       <div v-for="(pos, i) in positions" :key="i" class="absolute" :style="pos">
         <div class="animate-float">
           <SudokuAnimation

@@ -4,6 +4,17 @@
       <div class="mx-auto px-4 sm:px-6">
         <div class="flex items-center justify-end h-16">
           <div class="flex items-center space-x-2">
+            <UTooltip text="Email">
+              <a
+                href="mailto:thiggs911@gmail.com"
+                tabindex="0"
+                class="group inline-flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium text-pretty hover:bg-zinc-100 dark:hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-violet-500"
+                aria-label="thiggs911@gmail.com"
+                title="thiggs911@gmail.com"
+              >
+                <UIcon name="heroicons:paper-airplane" class="size-8" />
+              </a>
+            </UTooltip>
             <UTooltip text="GitHub (opens in a new tab)">
               <a
                 href="https://github.com/tylerhiggs"

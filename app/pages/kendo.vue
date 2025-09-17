@@ -3,7 +3,7 @@
     <PageNav
       gh-link="https://github.com/tylerhiggs/tylerhiggs.github.io/blob/main/app/pages/kendo.vue"
     />
-    <div class="fixed h-screen top-0 left-0 right-0">
+    <div class="invisible sm:visible fixed h-screen top-0 left-0 right-0">
       <div
         v-for="(pos, i) in positions"
         :key="i"
