@@ -8,7 +8,7 @@
               <a
                 href="mailto:thiggs911@gmail.com"
                 tabindex="0"
-                class="group inline-flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium text-pretty hover:bg-zinc-100 dark:hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-violet-500"
+                class="inline-flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium text-pretty hover:bg-zinc-100 dark:hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-violet-500"
                 aria-label="thiggs911@gmail.com"
                 title="thiggs911@gmail.com"
               >
@@ -21,7 +21,7 @@
                 target="_blank"
                 tabindex="0"
                 rel="noopener noreferrer"
-                class="group inline-flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium text-pretty hover:bg-zinc-100 dark:hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-violet-500"
+                class="inline-flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium text-pretty hover:bg-zinc-100 dark:hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-violet-500"
                 aria-label="GitHub (opens in a new tab)"
                 title="GitHub"
               >
@@ -35,7 +35,7 @@
                 target="_blank"
                 tabindex="0"
                 rel="noopener noreferrer"
-                class="group inline-flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium text-pretty hover:bg-zinc-100 dark:hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-violet-500"
+                class="inline-flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium text-pretty hover:bg-zinc-100 dark:hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-violet-500"
                 aria-label="LinkedIn (opens in a new tab)"
                 title="LinkedIn"
               >
@@ -49,7 +49,7 @@
                 target="_blank"
                 tabindex="0"
                 rel="noopener noreferrer"
-                class="group inline-flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium text-pretty hover:bg-zinc-100 dark:hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-violet-500"
+                class="inline-flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium text-pretty hover:bg-zinc-100 dark:hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-violet-500"
                 aria-label="Resume (opens in a new tab)"
                 title="Resume"
               >
