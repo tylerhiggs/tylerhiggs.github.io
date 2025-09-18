@@ -141,6 +141,14 @@
           Since the data is fairly static, I scrape the data at build time so
           that users don't have to wait for this every time they load the page.
         </p>
+        <p>
+          Another challenge was making all the data searchable. I used a
+          lightweight library called Fuse.js to do this. It allows for fuzzy
+          searching and is easy to use. The data needing to be searched through
+          is nested, with categories, sub-categories, and classes with names and
+          CSS properties. So I had to flatten the data structure before passing
+          it to Fuse.js.
+        </p>
       </section>
       <section ref="ssg">
         <h2 id="ssg" class="text-3xl font-semibold mt-12 mb-4">

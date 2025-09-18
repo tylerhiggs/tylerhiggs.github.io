@@ -9,44 +9,63 @@
       <UTooltip text="Go back to the homepage" :delay-duration="0">
         <NuxtLink
           to="/"
+          tabindex="0"
           aria-label="Home"
-          class="text-lg text-zinc-900 dark:text-zinc-400 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800 flex items-center gap-2 p-2"
+          class="text-zinc-900 dark:text-zinc-400 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800 flex items-center gap-2 p-2"
         >
-          <UIcon name="heroicons:home" class="size-5" />
+          <UIcon name="heroicons:home" class="size-8" />
         </NuxtLink>
       </UTooltip>
-      <UTooltip text="View my resume" :delay-duration="0">
+      <UTooltip text="Email">
+        <a
+          href="mailto:thiggs911@gmail.com"
+          tabindex="0"
+          class="text-zinc-900 dark:text-zinc-400 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800 flex items-center gap-2 p-2"
+          aria-label="thiggs911@gmail.com"
+          title="thiggs911@gmail.com"
+        >
+          <UIcon name="heroicons:paper-airplane" class="size-8" />
+        </a>
+      </UTooltip>
+      <UTooltip text="GitHub (opens in a new tab)">
+        <a
+          href="https://github.com/tylerhiggs"
+          target="_blank"
+          tabindex="0"
+          rel="noopener noreferrer"
+          class="text-zinc-900 dark:text-zinc-400 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800 flex items-center gap-2 p-2"
+          aria-label="GitHub (opens in a new tab)"
+          title="GitHub"
+        >
+          <UIcon name="mdi:github" class="size-8" />
+        </a>
+      </UTooltip>
+
+      <UTooltip text="LinkedIn (opens in a new tab)">
+        <a
+          href="https://www.linkedin.com/in/tyler-higgs-bba80614a/"
+          target="_blank"
+          tabindex="0"
+          rel="noopener noreferrer"
+          class="text-zinc-900 dark:text-zinc-400 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800 flex items-center gap-2 p-2"
+          aria-label="LinkedIn (opens in a new tab)"
+          title="LinkedIn"
+        >
+          <Icon name="mdi:linkedin" class="size-8" />
+        </a>
+      </UTooltip>
+
+      <UTooltip text="Resume (opens in a new tab)">
         <a
           href="/TylerHiggs-resume.pdf"
           target="_blank"
+          tabindex="0"
           rel="noopener noreferrer"
-          class="text-lg text-zinc-900 dark:text-zinc-400 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800 flex items-center gap-2 p-2"
+          class="text-zinc-900 dark:text-zinc-400 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800 flex items-center gap-2 p-2"
+          aria-label="Resume (opens in a new tab)"
+          title="Resume"
         >
-          My Resume
-        </a>
-      </UTooltip>
-      <UTooltip text="Send me an email" :delay-duration="0">
-        <a
-          href="mailto:thiggs911@gmail.com"
-          title="Email me"
-          class="text-lg text-zinc-900 dark:text-zinc-400 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800 flex items-center gap-2 p-2"
-        >
-          <UIcon name="heroicons:paper-airplane" size="24" aria-label="Email" />
-        </a>
-      </UTooltip>
-      <UTooltip
-        text="See this page's source code"
-        :delay-duration="0"
-        :content="{ sideOffset: 4 }"
-      >
-        <a
-          :href="ghLink || 'https://github.com/tylerhiggs'"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="GitHub"
-          class="text-lg text-zinc-900 dark:text-zinc-400 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800 flex items-center gap-2 p-2"
-        >
-          <UIcon size="32" aria-label="GitHub" name="mdi:github" />
+          <UIcon name="heroicons:document-text" class="size-8" />
         </a>
       </UTooltip>
     </div>

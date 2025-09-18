@@ -6,7 +6,7 @@ export async function getHighlighter(): Promise<Highlighter> {
   if (!highlighterInstance) {
     highlighterInstance = await createHighlighter({
       themes: ["catppuccin-mocha"],
-      langs: ["vue"],
+      langs: ["vue", "mdc"],
     });
   }
   return highlighterInstance;

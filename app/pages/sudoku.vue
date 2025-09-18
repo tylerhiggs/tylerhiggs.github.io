@@ -247,7 +247,7 @@
         </p>
         <p>
           There may be a way to send messages to Firebase directly from Rust,
-          but that would definitely be an overcomplication. This especially
+          but that would definitely be an overcomplicated. This especially
           satisfies the <strong>YAGNI (You Aren't Gunna Need It)</strong> and
           <strong>KISS (Keep It Simple, Stupid)</strong> principles.
         </p>

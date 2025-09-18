@@ -22,6 +22,9 @@ const version2Section = useTemplateRef("version2");
 const version3Section = useTemplateRef("version3");
 const featuresSection = useTemplateRef("features");
 const mdEditorSection = useTemplateRef("md-editor");
+const shortcutsSection = useTemplateRef("shortcuts");
+const parserSection = useTemplateRef("parser");
+const ssrSection = useTemplateRef("ssr");
 
 const journeyVisible = useElementVisibility(journeySection);
 const version1Visible = useElementVisibility(version1Section);
@@ -29,6 +32,9 @@ const version2Visible = useElementVisibility(version2Section);
 const version3Visible = useElementVisibility(version3Section);
 const featuresVisible = useElementVisibility(featuresSection);
 const mdEditorVisible = useElementVisibility(mdEditorSection);
+const shortcutsVisible = useElementVisibility(shortcutsSection);
+const parserVisible = useElementVisibility(parserSection);
+const ssrVisible = useElementVisibility(ssrSection);
 
 const outlineItems = computed(() => {
   return [
@@ -68,6 +74,24 @@ const outlineItems = computed(() => {
           label: "Markdown Editor",
           items: [],
           isVisible: mdEditorVisible.value,
+        },
+        {
+          id: "shortcuts",
+          label: "Shortcuts",
+          items: [],
+          isVisible: shortcutsVisible.value,
+        },
+        {
+          id: "parser",
+          label: "Markdown Parser",
+          items: [],
+          isVisible: parserVisible.value,
+        },
+        {
+          id: "ssr",
+          label: "Server-Side Rendering (SSR)",
+          items: [],
+          isVisible: ssrVisible.value,
         },
       ],
     },
@@ -125,8 +149,12 @@ const content = shallowRef("Here is an example of editable content");
         <TechChip icon="i-lucide:accessibility" title="Accessibility" />
         <TechChip icon="simple-icons:githubactions" title="CI/CD" />
       </div>
-      <section ref="journeySection">
-        <h2 id="the-journey" class="text-3xl font-semibold mt-12 mb-4">
+      <section>
+        <h2
+          id="the-journey"
+          ref="journeySection"
+          class="text-3xl font-semibold mt-12 mb-4"
+        >
           The Journey
         </h2>
         <section ref="version1">
@@ -152,8 +180,9 @@ const content = shallowRef("Here is an example of editable content");
               rel="noopener noreferrer"
               >Notion-like</a
             >
-            experience for users: A WYSIWYG rich text editor that autosaves
-            pages which can also be published to a public URL. I used
+            (also similar to Word and Google Docs) experience for users: A
+            WYSIWYG (What You See Is What You Get) rich text editor that
+            autosaves pages which can also be published to a public URL. I used
             <strong>Docker, Python, Django, and PostgreSQL</strong> for the
             backend, <strong>Auth0</strong> for authorization,
             <strong>GraphQL</strong> for the API and
@@ -172,9 +201,9 @@ const content = shallowRef("Here is an example of editable content");
               class="inline size-32 sm:size-24 lg:size-20 xl:size-16 mr-3"
             />
             <span>
-              <strong>YAGNI</strong> (You Aren't Gonna Need It): Overengineering
-              kills productivity. Prefer the simplest design until complexity
-              forces you otherwise.
+              <strong>YAGNI</strong> (You Aren't Gonna Need It):
+              Over-engineering kills productivity. Prefer the simplest design
+              until complexity forces you otherwise.
             </span>
           </div>
           <p>
@@ -225,15 +254,15 @@ const content = shallowRef("Here is an example of editable content");
             >. Most of these editors that exist use
             <code>contenteditable</code>, which is a complex and often
             frustrating API to work with, allowing you to directly edit HTML. I
-            had to mannually decide where the cursor should go and which element
+            had to manually decide where the cursor should go and which element
             it should be within (your cursor is right between bold and normal
             text right now, when you type are the new characters bold or
             normal). I also had to handle pasting from Word, Google Docs, and
             other sources. Every time you type in a contenteditable
             <code>div</code>, the cursor would jump to the beginning since a
             state update was necessary, and the cursor position would need to be
-            mannually set back. Here is an example of the buggy behavior I had
-            to fix:
+            manually set back. Here is an example of the buggy behavior I had to
+            fix:
           </p>
           <div
             contenteditable
@@ -306,13 +335,17 @@ const content = shallowRef("Here is an example of editable content");
           </p>
         </section>
       </section>
-      <section ref="features">
-        <h2 id="features" class="text-3xl font-semibold mt-12 mb-4">
+      <section>
+        <h2
+          id="features"
+          ref="features"
+          class="text-3xl font-semibold mt-12 mb-4"
+        >
           Features
         </h2>
         <section ref="md-editor">
           <h3 id="md-editor" class="text-2xl font-semibold mt-8 mb-2">
-            Markdown Editor
+            Syntax Highlighting
           </h3>
           <p>
             The editor uses a simple <code>textarea</code> for input, with
@@ -338,6 +371,147 @@ const content = shallowRef("Here is an example of editable content");
             this technique:
           </p>
           <CodeEditor />
+        </section>
+        <section ref="shortcuts">
+          <h3 id="shortcuts" class="text-2xl font-semibold mt-8 mb-2">
+            Shortcuts
+          </h3>
+          <p>
+            I also brought some features over from the WYSIWYG editor, like
+            <UKbd value="meta" /><UKbd value="b" /> automatically adds
+            <code>**bold**</code> text where your cursor is or around
+            highlighted text, and <UKbd value="meta" /><UKbd value="i" />
+            automatically adds <code>*italic*</code> text. This involves
+            manually manipulating the text in the textarea and setting the
+            cursor position, which is a bit tricky but not too bad. But this
+            functionality ends up
+            <strong>breaking the browser's built-in undo/redo stack</strong>
+            (because the <code>textarea</code> value change is not tracked), so
+            I had to
+            <strong>manually implement undo/redo</strong> functionality.
+            <a href="#md-editor"
+              >See the editor in the section above to try out the shortcuts and
+              how they break undo/redo</a
+            >.
+          </p>
+          <p>
+            Beyond this, I also added a command palette that opens when you
+            press
+            <UKbd value="/" /> while focused in the editor. This allows you to
+            search for any markdown syntax or component syntax without needing
+            to memorize it. You can also
+            <strong>search for any icon</strong> (<UIcon
+              name="heroicons:bug-ant"
+            />) or <strong>special key binding</strong> (<UKbd
+              value="shift"
+            />). You can also search <strong>"Upload Image"</strong> to download
+            an image and have the markdown automatically generated to point to
+            your freshly uploaded image!
+          </p>
+          <p>
+            When you <strong>copy rich text</strong>, and paste it into the
+            editor, it will <strong>translate to markdown</strong>. For example,
+            if you copy some text from Google Docs or a webpage, and paste it
+            into the editor, it will automatically convert it to markdown. This
+            works for headings, links, bold, italic, lists, and more.
+          </p>
+        </section>
+        <section ref="autosave">
+          <h3 id="autosave" class="text-2xl font-semibold mt-8 mb-2">
+            Autosave
+          </h3>
+          <p>
+            The editor automatically saves your changes to a SQLite database
+            every few seconds, so you never have to worry about losing your
+            work. If you close the tab or browser, your changes will be there
+            when you come back. You can also manually save your changes by
+            pressing
+            <UKbd value="meta" /><UKbd value="s" />.
+          </p>
+          <p>
+            I implemented the debounce logic poorly the first time, storing the
+            last update time in a ref and using several
+            <code>setTimeout</code> calls which decide whether to execute based
+            on the time of the last update. This was overly complex and buggy.
+          </p>
+          <p>
+            I simplified this greatly by storing the timeout in a vue
+            <code>ref</code>
+            and clearing it and setting a new timeout every time the content
+            changes. When the timeout completes, the content is saved. Much
+            simpler and more reliable.
+          </p>
+        </section>
+        <section ref="parser">
+          <h3 id="parser" class="text-2xl font-semibold mt-8 mb-2">
+            Markdown Parser
+          </h3>
+          <p>
+            I built a custom markdown parser since I wanted to support extra
+            components like Tabs, Accordions, and Callouts. Because one of my
+            goals was to prevent XXS attacks, I couldn't use a library that
+            simply converted markdown to HTML since that would allow arbitrary
+            HTML to be injected. Even with sanitization libraries, I couldn't be
+            sure that no vulnerabilities existed, and these libraries often have
+            to be updated to patch new vulnerabilities. So I built a custom
+            parser that transforms the markdown in to tokens.
+          </p>
+          <p>
+            I also used
+            <a
+              href="https://shiki.style/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >shiki</a
+            >
+            to provide syntax highlighting for code blocks and inline code,
+            which also returns in the form of tokens. The main problem I faced
+            here was that shiki uses web assembly, which is not supported in
+            Cloudflare Workers for security reasons (the platform I used to host
+            the backend). Since I was trying to optimize for simplicity, cost,
+            and the <strong>viewing</strong> of articles, I decided to compute
+            the syntax highlighting on the client while editing the articles.
+            This was a tradeoff, but I would rather things be a bit slower while
+            editing, than have rendered and public articles take longer to load.
+            This does improve performance for live previews of rendered markdown
+            while editing.
+          </p>
+        </section>
+        <section ref="ssr">
+          <h3 id="ssr" class="text-2xl font-semibold mt-8 mb-2">
+            Server-Side Rendering (SSR)
+          </h3>
+          <p>
+            Once the browser requests a public article, the server fetches the
+            article from the database and renders it as HTML. This HTML is then
+            sent back to the browser, where it is displayed to the user. This
+            process is known as server-side rendering (SSR), and it has several
+            benefits, including improved performance and SEO.
+          </p>
+          <p>
+            Keeping with maximizing simplicity, I used
+            <a
+              href="https://nuxt.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Nuxt 4</a
+            >
+            to handle SSR for me automatically.
+          </p>
+        </section>
+        <section ref="ssg">
+          <h3 id="ssg" class="text-2xl font-semibold mt-8 mb-2">
+            Static Site Generation (SSG)
+          </h3>
+          <p>
+            SSG is similar to SSR, but instead of rendering the HTML on the
+            server for each request, the HTML is generated at build time and
+            served as static files. This can improve performance even further,
+            since the server does not have to render the HTML for each request.
+            However, it does require a build step, which can be time-consuming
+            for large sites, which is why I only use SSG for the homepage
+            currently.
+          </p>
         </section>
       </section>
     </div>

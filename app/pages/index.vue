@@ -117,35 +117,48 @@
                   Live Demo
                 </a>
               </div>
+              <div class="flex flex-wrap gap-2 mt-4">
+                <TechChip icon="logos:nuxt-icon" title="Nuxt" />
+                <TechChip icon="logos:vue" title="Vue" />
+                <TechChip icon="logos:oauth" title="OAuth" />
+                <TechChip icon="file-icons:sqlite" title="SQLite" />
+                <TechChip icon="simple-icons:drizzle" title="Drizzle ORM" />
+                <TechChip icon="logos:tailwindcss-icon" title="Tailwind CSS" />
+                <TechChip icon="logos:typescript-icon" title="TypeScript" />
+                <TechChip icon="logos:cloudflare-icon" title="Cloudflare" />
+                <TechChip icon="i-heroicons:magnifying-glass" title="SEO" />
+                <TechChip icon="i-heroicons:server-stack" title="SSR" />
+                <TechChip
+                  icon="i-heroicons:device-phone-mobile"
+                  title="Responsive"
+                />
+                <TechChip icon="i-lucide:accessibility" title="Accessibility" />
+                <TechChip icon="simple-icons:githubactions" title="CI/CD" />
+              </div>
               <div class="flex flex-col gap-4">
-                An advanced markdown editor in the browser with Google OAuth,
-                live preview, auto-saving to the cloud, extra components not
-                usually found in markdown, and SEO + SSR friendly pages publish
-                to a public and unique URL. CI/CD pipeline runs unit tests and
-                deploys to Cloudflare.
-                <div class="flex flex-wrap gap-2 mt-4">
-                  <TechChip icon="logos:nuxt-icon" title="Nuxt" />
-                  <TechChip icon="logos:vue" title="Vue" />
-                  <TechChip icon="logos:oauth" title="OAuth" />
-                  <TechChip icon="file-icons:sqlite" title="SQLite" />
-                  <TechChip icon="simple-icons:drizzle" title="Drizzle ORM" />
-                  <TechChip
-                    icon="logos:tailwindcss-icon"
-                    title="Tailwind CSS"
-                  />
-                  <TechChip icon="logos:typescript-icon" title="TypeScript" />
-                  <TechChip icon="logos:cloudflare-icon" title="Cloudflare" />
-                  <TechChip icon="i-heroicons:magnifying-glass" title="SEO" />
-                  <TechChip icon="i-heroicons:server-stack" title="SSR" />
-                  <TechChip
-                    icon="i-heroicons:device-phone-mobile"
-                    title="Responsive"
-                  />
-                  <TechChip
-                    icon="i-lucide:accessibility"
-                    title="Accessibility"
-                  />
-                  <TechChip icon="simple-icons:githubactions" title="CI/CD" />
+                <div>
+                  <p>
+                    An advanced markdown editor in the browser with Google
+                    OAuth, live preview, auto-saving to the cloud, extra
+                    components not usually found in markdown, and SEO + SSR
+                    friendly pages publish to a public and unique URL. CI/CD
+                    pipeline runs unit tests and deploys to Cloudflare.
+                  </p>
+                  <p>
+                    I built this project 3 times, each time improving the tech
+                    stack and usability. The first version was way too complex
+                    for a new grad to implement solo and in free time, using
+                    Dockerized Django, PostgreSQL, GraphQL, and Vue. The second
+                    version was much better but still had some rough edges. The
+                    WYSIWYG editor was clunky and hard to use, with far too many
+                    edge cases for me to handle and test alone. This third
+                    version is by far the best and most polished, optimizing
+                    both the user and developer's experience.
+                  </p>
+                  <p>
+                    Click anywhere to read about my journey building this, the
+                    problems I faced, and the solutions I implemented.
+                  </p>
                 </div>
               </div>
             </ProjectCard>
@@ -176,28 +189,44 @@
                 Live Demo
               </a>
             </div>
-            <div class="flex flex-col gap-4">
+            <div class="flex flex-wrap gap-2 mt-4">
+              <TechChip icon="logos:rust" title="Rust" />
+              <TechChip icon="logos:angular-icon" title="Angular" />
+              <TechChip icon="logos:firebase-icon" title="Firebase" />
+              <TechChip icon="logos:nodejs-icon" title="Node.js" />
+              <TechChip icon="heroicons:circle-stack" title="IndexedDB" />
+              <TechChip icon="logos:tailwindcss-icon" title="Tailwind CSS" />
+              <TechChip icon="logos:typescript-icon" title="TypeScript" />
+              <TechChip
+                icon="i-heroicons:device-phone-mobile"
+                title="Responsive"
+              />
+              <TechChip icon="simple-icons:githubactions" title="CI/CD" />
+            </div>
+            <p>
               Rust puzzle generator and solver publishes puzzles to a Node
               server which saves them to a Firebase database. Angular frontend
               fetches and displays puzzles with a clean, responsive UI. Features
               include pencil marks, hints, and multiple difficulty levels. CI/CD
               pipeline runs unit tests and deploys to Firebase Hosting.
               IndexedDB is used for local storage and offline support.
-              <div class="flex flex-wrap gap-2 mt-4">
-                <TechChip icon="logos:rust" title="Rust" />
-                <TechChip icon="logos:angular-icon" title="Angular" />
-                <TechChip icon="logos:firebase-icon" title="Firebase" />
-                <TechChip icon="logos:nodejs-icon" title="Node.js" />
-                <TechChip icon="heroicons:circle-stack" title="IndexedDB" />
-                <TechChip icon="logos:tailwindcss-icon" title="Tailwind CSS" />
-                <TechChip icon="logos:typescript-icon" title="TypeScript" />
-                <TechChip
-                  icon="i-heroicons:device-phone-mobile"
-                  title="Responsive"
-                />
-                <TechChip icon="simple-icons:githubactions" title="CI/CD" />
-              </div>
-            </div>
+            </p>
+            <p>
+              I first build this project with Swift and SwiftUI for iOS,
+              generating puzzles as the user chooses difficulty and solving them
+              on-device. I experienced performance issues generating hard
+              puzzles on the fly, and I made small improvements by taking
+              advantage of multi-core processing, but it still wasn't fast
+              enough.
+            </p>
+            <p>
+              Building a web version was significantly easier than iOS, and
+              delivered nearly the same functionality with less complexity,
+              showing me mobile apps really should only be built when absolutely
+              necessary. And generating puzzles asynchronously on a server is
+              much faster than on-device, allowing for a much better user
+              experience.
+            </p>
           </ProjectCard>
           <ProjectCard
             title="Kendo CSS Utilities Cheat Sheet"
@@ -225,26 +254,39 @@
                 Live Demo
               </a>
             </div>
-            <div class="flex flex-col gap-4">
-              Searchable cheatsheet for Kendo CSS utilities using Next.js SSG
+            <div class="flex flex-wrap gap-2 mt-4">
+              <TechChip icon="logos:nextjs-icon" title="Next.js" />
+              <TechChip icon="logos:react" title="React" />
+              <TechChip icon="logos:tailwindcss-icon" title="Tailwind CSS" />
+              <TechChip icon="logos:typescript-icon" title="TypeScript" />
+              <TechChip icon="logos:vercel-icon" title="Vercel" />
+              <TechChip icon="i-heroicons:magnifying-glass" title="SEO" />
+              <TechChip icon="i-heroicons:server-stack" title="SSG" />
+              <TechChip
+                icon="i-heroicons:device-phone-mobile"
+                title="Responsive"
+              />
+              <TechChip icon="i-lucide:accessibility" title="Accessibility" />
+            </div>
+            <p>
+              Searchable cheat-sheet for Kendo CSS utilities using Next.js SSG
               and Fuse.js fuzzy search, improving accessibility and efficiency
               for developers. The site is search engine optimized, fully
-              accessible, mobile-friendly, and supports light and dark modes
-              <div class="flex flex-wrap gap-2 mt-4">
-                <TechChip icon="logos:nextjs-icon" title="Next.js" />
-                <TechChip icon="logos:tailwindcss-icon" title="Tailwind CSS" />
-                <TechChip icon="logos:typescript-icon" title="TypeScript" />
-                <TechChip icon="logos:vercel-icon" title="Vercel" />
-                <TechChip icon="logos:react" title="React" />
-                <TechChip icon="i-heroicons:magnifying-glass" title="SEO" />
-                <TechChip icon="i-heroicons:server-stack" title="SSG" />
-                <TechChip
-                  icon="i-heroicons:device-phone-mobile"
-                  title="Responsive"
-                />
-                <TechChip icon="i-lucide:accessibility" title="Accessibility" />
-              </div>
-            </div>
+              accessible, mobile-friendly, and supports light and dark modes.
+            </p>
+            <p>
+              I built this project to solve my own problem at my last company:
+              Kendo UI is a powerful CSS framework, but its documentation is
+              lacking. Finding the right utility class often requires digging
+              through multiple pages of docs or trial and error. This cheat
+              sheet makes it easy to quickly find the class you need, improving
+              developer productivity.
+            </p>
+            <p>
+              I challenged myself to build this project in a week, and I did it
+              by going with the simplest solutions possible, while still using
+              best practices to prevent future road blocks.
+            </p>
           </ProjectCard>
           <ProjectCard
             title="Mortgage and Rent Retirement Calculator"
@@ -272,24 +314,37 @@
                 Live Demo
               </a>
             </div>
-            <div class="flex flex-col gap-4">
+            <div class="flex flex-wrap gap-2 mt-4">
+              <TechChip icon="logos:vue" title="Vue" />
+              <TechChip icon="logos:tailwindcss-icon" title="Tailwind CSS" />
+              <TechChip icon="logos:typescript-icon" title="TypeScript" />
+              <TechChip
+                icon="i-heroicons:device-phone-mobile"
+                title="Responsive"
+              />
+              <TechChip icon="i-lucide:accessibility" title="Accessibility" />
+              <TechChip icon="simple-icons:githubactions" title="CI/CD" />
+              <TechChip icon="logos:firebase-icon" title="Firebase" />
+              <TechChip icon="simple-icons:shadcnui" title="shadcn/ui" />
+            </div>
+            <p>
               Buy-vs-rent retirement calculator with reactive charts and
               light/dark support. UX to clarify tradeoffs and surface actionable
               retirement outcomes for users.
-              <div class="flex flex-wrap gap-2 mt-4">
-                <TechChip icon="logos:vue" title="Vue" />
-                <TechChip icon="logos:tailwindcss-icon" title="Tailwind CSS" />
-                <TechChip icon="logos:typescript-icon" title="TypeScript" />
-                <TechChip
-                  icon="i-heroicons:device-phone-mobile"
-                  title="Responsive"
-                />
-                <TechChip icon="i-lucide:accessibility" title="Accessibility" />
-                <TechChip icon="simple-icons:githubactions" title="CI/CD" />
-                <TechChip icon="logos:firebase-icon" title="Firebase" />
-                <TechChip icon="simple-icons:shadcnui" title="shadcn/ui" />
-              </div>
-            </div>
+            </p>
+            <p>
+              Several years ago, I wanted to know whether I should rent or buy a
+              home. Homes build equity, but loss from opportunity cost of the
+              down payment make this a difficult question to answer once and for
+              all.
+            </p>
+            <p>
+              Beyond engineering decisions, I needed to find a good way to
+              fairly compare the two options, while communicating the tradeoffs
+              to users. I decided to focus on retirement outcomes assuming users
+              invest every dollar they have, as this is a long-term decision
+              with significant financial implications.
+            </p>
           </ProjectCard>
         </div>
       </section>
