@@ -155,10 +155,6 @@
                     version is by far the best and most polished, optimizing
                     both the user and developer's experience.
                   </p>
-                  <p>
-                    Click anywhere to read about my journey building this, the
-                    problems I faced, and the solutions I implemented.
-                  </p>
                 </div>
               </div>
             </ProjectCard>
@@ -346,6 +342,134 @@
               with significant financial implications.
             </p>
           </ProjectCard>
+        </div>
+      </section>
+      <section>
+        <h2 class="text-5xl font-semibold my-16">Work Experience</h2>
+        <div class="flex flex-col gap-12">
+          <CompanyCard
+            title="Software Engineer II"
+            company="Patterson - Fuse"
+            dates="Jul 2023 — Sept 2025"
+          >
+            <template #tech>
+              <TechChip icon="logos:angular-icon" title="Angular" />
+              <TechChip icon="logos:c-sharp" title="C#" />
+              <TechChip icon="logos:dotnet" title=".NET" />
+              <TechChip icon="logos:azure-icon" title="Azure" />
+              <TechChip icon="logos:typescript-icon" title="TypeScript" />
+              <TechChip icon="heroicons:circle-stack" title="SQL" />
+              <TechChip icon="simple-icons:nx" title="Nx Workspaces" />
+              <TechChip icon="i-lucide:accessibility" title="Accessibility" />
+              <TechChip icon="simple-icons:githubactions" title="CI/CD" />
+              <TechChip
+                icon="logos:testing-library"
+                title="Angular Testing Library"
+              />
+            </template>
+            <ul class="list-disc pl-6 space-y-2 text-lg">
+              <li>
+                Developed and maintained a form-building microservice using Nx
+                workspaces, Angular, C#, .NET, and Azure.
+              </li>
+              <li>
+                Led the AngularJS→Angular migration for my team, pioneering best
+                practices and improving bundle performance and maintainability.
+              </li>
+              <li>
+                Authored comprehensive migration documentation, reducing
+                onboarding time for new contributors.
+              </li>
+              <li>
+                Delivered complex Angular features ahead of schedule,
+                accelerating delivery and reducing backlog.
+              </li>
+              <li>
+                Served as accessibility and component testing lead; completed a
+                formal accessibility course and applied WCAG best practices to
+                new and existing components.
+              </li>
+              <li>
+                Discovered and fixed SQL injection vulnerabilities, removing
+                critical security risks.
+              </li>
+            </ul>
+          </CompanyCard>
+          <CompanyCard
+            title="Software Engineer"
+            company="Vividly"
+            dates="Jul 2022 — Jun 2023"
+          >
+            <template #tech>
+              <TechChip icon="logos:react" title="React" />
+              <TechChip icon="logos:typescript-icon" title="TypeScript" />
+              <TechChip icon="logos:graphql" title="GraphQL" />
+              <TechChip icon="logos:python" title="Python" />
+              <TechChip icon="logos:django" />
+              <TechChip icon="logos:postgresql" title="PostgreSQL" />
+              <TechChip icon="logos:docker-icon" title="Docker" />
+              <TechChip
+                icon="logos:testing-library"
+                title="React Testing Library"
+              />
+            </template>
+            <ul class="list-disc pl-6 space-y-2 text-lg">
+              <li>
+                Modernized legacy stack with Django, GraphQL, and TypeScript
+                React, achieving 10× faster load times and improved developer
+                safety.
+              </li>
+              <li>
+                Migrated and cleansed over 1TB of customer data from Firebase to
+                PostgreSQL using custom ETL pipelines.
+              </li>
+              <li>
+                Designed and implemented end-to-end encryption for a data
+                scraping tool, securing sensitive customer information.
+              </li>
+              <li>
+                Enhanced deductions and reconciliation workflows by integrating
+                a new API for invoice scanning and validation.
+              </li>
+              <li>
+                Built comprehensive test suites (React Testing Library, GraphQL
+                integration, PyTest), ensuring reliability and faster
+                development cycles.
+              </li>
+            </ul>
+          </CompanyCard>
+          <CompanyCard
+            title="Software Engineer Intern"
+            company="Vividly"
+            dates="Jun 2022 — Aug 2022"
+          >
+            <template #tech>
+              <TechChip icon="logos:react" title="React" />
+              <TechChip icon="logos:python" title="Python" />
+              <TechChip icon="material-icon-theme:gcp" title="GCP" />
+              <TechChip icon="logos:javascript" title="JavaScript" />
+              <TechChip icon="logos:firebase-icon" title="Firebase" />
+              <TechChip icon="simple-icons:githubactions" title="CI/CD" />
+            </template>
+            <ul class="list-disc pl-6 space-y-2 text-lg">
+              <li>
+                Built a Chrome extension to upload email attachments directly to
+                user accounts.
+              </li>
+              <li>
+                Migrated GitHub Actions to self-hosted GCP runners, cutting CI
+                costs by 50%.
+              </li>
+              <li>
+                Piloted preview-site CI workflow for PRs, shortening QA feedback
+                cycles with preview sites for every PR.
+              </li>
+              <li>
+                Completed front end (React) and back end (Python) tasks to add
+                features, make improvements, and fix bugs.
+              </li>
+            </ul>
+          </CompanyCard>
         </div>
       </section>
     </div>

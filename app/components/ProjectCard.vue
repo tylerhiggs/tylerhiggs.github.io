@@ -1,6 +1,6 @@
 <template>
   <article
-    class="relative group border has-focus:outline-1 dark:border-zinc-700 border-zinc-200 isolate shadow-xl rounded-lg bg-zinc-200 dark:bg-zinc-800 hover:scale-105 transition-transform duration-300 ease-in-out"
+    class="relative group border has-focus:outline-1 dark:border-zinc-700 border-zinc-200 isolate shadow-xl rounded-lg backdrop-blur-sm hover:scale-105 transition-transform duration-300 ease-in-out"
   >
     <NuxtImg
       :src="imageUrl"
