@@ -78,12 +78,12 @@
           </p>
           <p class="text-xl text-pretty">
             Hauling hay and fixing equipment before sunrise on the farm taught
-            me grit. That drive carried me through MIT, where I often outpaced
-            classmates by putting in extra hours and tackling tough problems
-            head-on. In my software engineering career, I've jumped into
-            unfamiliar tech stacks like C#, .NET, and Angular, quickly becoming
-            the go-to resource for my team. I thrive on learning quickly,
-            solving challenging bugs, and helping others succeed.
+            me grit. That drive carried me through MIT, where I excelled by
+            putting in extra hours and tackling tough problems head-on. In my
+            software engineering career, I've jumped into unfamiliar tech stacks
+            like C#, .NET, and Angular, quickly becoming the go-to resource for
+            my team. I thrive on learning quickly, solving challenging bugs, and
+            helping others succeed.
           </p>
         </div>
       </section>
