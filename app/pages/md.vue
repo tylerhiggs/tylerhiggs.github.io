@@ -107,6 +107,25 @@ const outlineItems = computed(() => {
 });
 
 const content = shallowRef("Here is an example of editable content");
+const benchmarkCode = `const startTime = performance.now();
+const result = diffLines(previous, newText);
+const parsed = JSON.parse(result) as DiffResult;
+const endTime = performance.now();
+diffCount++;
+totalDiffTime += endTime - startTime;
+console.log(
+  \`Current averageDiffTime is \${(totalDiffTime / diffCount).toFixed(2)}ms\`,
+);
+const startTimeTS = performance.now();
+const resultTS = tsDiffLines(previous, newText);
+const endTimeTS = performance.now();
+tsDiffCount++;
+tsTotalDiffTime += endTimeTS - startTimeTS;
+console.log(
+  \`Current tsAverageDiffTime is \${(tsTotalDiffTime / tsDiffCount).toFixed(
+    2,
+  )}ms\`,
+);`;
 </script>
 
 <template>
@@ -429,6 +448,28 @@ const content = shallowRef("Here is an example of editable content");
             JavaScript. This was my first time using Go and WebAssembly, and it
             was a fun experience. I learned a lot about both technologies, and I
             was able to improve the performance of the editor significantly.
+          </p>
+          <p>
+            However, it is a myth that WebAssembly is always faster than
+            JavaScript. So I ran an experiment to compare the performance of my
+            Go WebAssembly implementation to a TypeScript implementation of the
+            same algorithm. I tested in the browser where the code would
+            actually be running and added the entire Bee Movie script to the
+            editor and started editing. While both implementations were
+            performant, the Go WebAssembly implementation averaged 1.27 ms per
+            edit, while the TypeScript implementation averaged 0.22 ms per edit.
+            So in this case, the
+            <strong
+              >TypeScript implementation was actually more than 5 times faster
+              than the Go WebAssembly implementation</strong
+            >! I did this in Chrome using the
+            <code>performance.now()</code> method to most accurately measure the
+            time taken by each implementation. I got similar results in Safari.
+          </p>
+          <CodeBlock :code="benchmarkCode" lang="ts" />
+          <p>
+            Ultimately, the Go WebAssembly code <em>should</em> have been
+            faster, but this is why I always validate my assumptions with data.
           </p>
         </section>
         <section ref="shortcuts">

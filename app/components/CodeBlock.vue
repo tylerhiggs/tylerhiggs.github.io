@@ -35,6 +35,7 @@ const props = defineProps<{
   code: string;
   name?: string;
   icon?: string;
+  lang: "vue" | "ts" | "mdc";
 }>();
 const copied = ref(false);
 
@@ -53,7 +54,7 @@ const copyToClipboard = async () => {
 // This will run at build time during SSG
 const { data: highlightedHtml } = await useAsyncData(
   `highlight-${hashCode(props.code)}`,
-  () => highlightCode(props.code),
+  () => highlightCode(props.code, props.lang),
   {
     server: true, // Ensure this runs on the server
   }

@@ -6,13 +6,16 @@ export async function getHighlighter(): Promise<Highlighter> {
   if (!highlighterInstance) {
     highlighterInstance = await createHighlighter({
       themes: ["catppuccin-mocha"],
-      langs: ["vue", "mdc"],
+      langs: ["vue", "mdc", "ts"],
     });
   }
   return highlighterInstance;
 }
 
-export async function highlightCode(code: string): Promise<string> {
+export async function highlightCode(
+  code: string,
+  lang: "vue" | "ts" | "mdc"
+): Promise<string> {
   if (!code.trim()) {
     return "";
   }
@@ -20,7 +23,7 @@ export async function highlightCode(code: string): Promise<string> {
   try {
     const highlighter = await getHighlighter();
     return highlighter.codeToHtml(code, {
-      lang: "vue",
+      lang,
       theme: "catppuccin-mocha",
       defaultColor: false,
       colorReplacements: {
