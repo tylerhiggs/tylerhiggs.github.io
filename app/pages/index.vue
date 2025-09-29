@@ -161,6 +161,11 @@
                     version is by far the best and most polished, optimizing
                     both the user and developer's experience.
                   </p>
+                  <p>
+                    I learned a lot about WebAssembly and Go building the
+                    editor, and relied on performance benchmarks to decide the
+                    fastest solutions, which is not always WebAssembly.
+                  </p>
                 </div>
               </div>
             </ProjectCard>
