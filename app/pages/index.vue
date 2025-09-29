@@ -61,7 +61,7 @@
       </div>
     </nav>
 
-    <div class="flex flex-col w-full px-1 sm:p-0 sm:w-2/3 z-10">
+    <div class="flex flex-col w-full px-1 sm:p-0 sm:w-5/6 2xl:w-2/3 z-10">
       <div class="relative pb-24 px-7 sm:px-0">
         <h1 class="sm:text-9xl text-7xl font-bold mt-20">
           Tyler Higgs<br /><span class="text-violet-500"
@@ -69,7 +69,7 @@
           >
         </h1>
       </div>
-      <section class="gap-8 px-8 ms:px-0">
+      <section class="gap-8 px-8 sm:px-0">
         <h2 class="text-5xl font-semibold mt-48 mb-10">About Me</h2>
         <div class="flex flex-col">
           <p class="text-xl text-pretty">
@@ -90,7 +90,7 @@
       </section>
       <section>
         <h2 class="text-5xl font-semibold my-16 px-8 sm:px-0">Solo Projects</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-32">
+        <div class="grid grid-cols-1 xl:grid-cols-2 gap-8 mb-32">
           <div class="[&_img]:contrast-175">
             <ProjectCard
               title="Extended Markdown Editor"
@@ -375,6 +375,7 @@
               <TechChip icon="logos:c-sharp" title="C#" />
               <TechChip icon="logos:dotnet" title=".NET" />
               <TechChip icon="logos:azure-icon" title="Azure" />
+              <TechChip icon="logos:docker-icon" title="Docker" />
               <TechChip icon="logos:typescript-icon" title="TypeScript" />
               <TechChip icon="heroicons:circle-stack" title="SQL" />
               <TechChip icon="simple-icons:nx" title="Nx Workspaces" />
