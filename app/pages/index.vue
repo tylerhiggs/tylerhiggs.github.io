@@ -74,7 +74,8 @@
         <div class="flex flex-col">
           <p class="text-xl text-pretty">
             I'm a full stack software engineer with a passion for building web
-            applications and exploring new technologies.
+            applications and exploring new technologies, so much that I do it in
+            my free time.
           </p>
           <p class="text-xl text-pretty">
             Hauling hay and fixing equipment before sunrise on the farm taught
@@ -125,6 +126,11 @@
                 <TechChip icon="simple-icons:drizzle" title="Drizzle ORM" />
                 <TechChip icon="logos:tailwindcss-icon" title="Tailwind CSS" />
                 <TechChip icon="logos:typescript-icon" title="TypeScript" />
+                <TechChip icon="logos:go" />
+                <TechChip
+                  icon="vscode-icons:file-type-wasm"
+                  title="WebAssembly"
+                />
                 <TechChip icon="logos:cloudflare-icon" title="Cloudflare" />
                 <TechChip icon="i-heroicons:magnifying-glass" title="SEO" />
                 <TechChip icon="i-heroicons:server-stack" title="SSR" />
@@ -198,6 +204,10 @@
                 title="Responsive"
               />
               <TechChip icon="simple-icons:githubactions" title="CI/CD" />
+              <TechChip
+                icon="logos:testing-library"
+                title="Angular Testing Library"
+              />
             </div>
             <p>
               Rust puzzle generator and solver publishes puzzles to a Node
@@ -258,6 +268,8 @@
               <TechChip icon="logos:vercel-icon" title="Vercel" />
               <TechChip icon="i-heroicons:magnifying-glass" title="SEO" />
               <TechChip icon="i-heroicons:server-stack" title="SSG" />
+              <TechChip icon="simple-icons:shadcnui" title="shadcn/ui" />
+
               <TechChip
                 icon="i-heroicons:device-phone-mobile"
                 title="Responsive"
@@ -321,7 +333,6 @@
               <TechChip icon="i-lucide:accessibility" title="Accessibility" />
               <TechChip icon="simple-icons:githubactions" title="CI/CD" />
               <TechChip icon="logos:firebase-icon" title="Firebase" />
-              <TechChip icon="simple-icons:shadcnui" title="shadcn/ui" />
             </div>
             <p>
               Buy-vs-rent retirement calculator with reactive charts and

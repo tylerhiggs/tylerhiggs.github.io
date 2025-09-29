@@ -9,12 +9,14 @@
         <h3 class="text-3xl font-bold text-violet-600 dark:text-violet-400">
           {{ title }}
         </h3>
-        <p class="text-lg font-medium text-zinc-700 dark:text-zinc-300">
+        <div
+          class="text-lg font-medium text-zinc-700 dark:text-zinc-300 flex flex-col gap-2"
+        >
           {{ company }}
-          <span class="text-sm text-zinc-500 dark:text-zinc-400">{{
-            dates
-          }}</span>
-        </p>
+          <div class="text-sm text-zinc-500 dark:text-zinc-400">
+            {{ dates }}
+          </div>
+        </div>
       </div>
       <div class="flex flex-wrap gap-2 mt-4 md:mt-0">
         <slot name="tech" />

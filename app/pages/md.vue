@@ -22,6 +22,7 @@ const version2Section = useTemplateRef("version2");
 const version3Section = useTemplateRef("version3");
 const featuresSection = useTemplateRef("features");
 const mdEditorSection = useTemplateRef("md-editor");
+const wasmSection = useTemplateRef("wasm");
 const shortcutsSection = useTemplateRef("shortcuts");
 const parserSection = useTemplateRef("parser");
 const ssrSection = useTemplateRef("ssr");
@@ -32,6 +33,7 @@ const version2Visible = useElementVisibility(version2Section);
 const version3Visible = useElementVisibility(version3Section);
 const featuresVisible = useElementVisibility(featuresSection);
 const mdEditorVisible = useElementVisibility(mdEditorSection);
+const wasmVisible = useElementVisibility(wasmSection);
 const shortcutsVisible = useElementVisibility(shortcutsSection);
 const parserVisible = useElementVisibility(parserSection);
 const ssrVisible = useElementVisibility(ssrSection);
@@ -74,6 +76,12 @@ const outlineItems = computed(() => {
           label: "Markdown Editor",
           items: [],
           isVisible: mdEditorVisible.value,
+        },
+        {
+          id: "wasm",
+          label: "Using WebAssembly to improve performance",
+          items: [],
+          isVisible: wasmVisible.value,
         },
         {
           id: "shortcuts",
@@ -371,6 +379,57 @@ const content = shallowRef("Here is an example of editable content");
             this technique:
           </p>
           <CodeEditor />
+        </section>
+        <section ref="wasm">
+          <h3 id="wasm" class="text-2xl font-semibold mt-8 mb-2">
+            Using Go compiled into WebAssembly to improve performance
+          </h3>
+          <p>
+            At first, the syntax highlighting for markdown in the editor was
+            done as simply as possible: Whenever the content changed, the entire
+            content was re-parsed and re-highlighted. This worked fine for small
+            documents, but as the document grew larger, the performance became
+            unacceptable. I needed a way to improve the performance of the
+            syntax highlighting without sacrificing accuracy.
+          </p>
+          <p>
+            I decided to re-highlight only the lines that were changed so that
+            users could get similar performance regardless of the size of their
+            page. The JavaScript <code>Event</code> fired by
+            <code>textarea</code>
+            input does not provide any information about what changed, so I had
+            to manually compare the old and new content to determine which lines
+            changed.
+          </p>
+          <p>
+            There are complex algorithms for doing this, like what GitHub uses
+            to show diffs, but my use case is much simpler: I can assume that
+            changed lines are contiguous since I am getting the diff on every
+            change (key press, delete, delete several lines, paste several
+            lines), unlike GitHub where many changes may be made before a diff
+            is requested. I also only need to know which lines changed, not the
+            exact character-level changes within those lines. This allows me to
+            use a much simpler algorithm that runs in linear time and does not
+            rely on computing the similarity of lines, making it much more
+            predictable.
+          </p>
+          <p>
+            My algorithm finds the first changed line, starting the search at
+            the beginning of the document and working its way down until it
+            finds a line that has changed. It similarly finds the last changed
+            line by going from the bottom. From there it can figure out whether
+            a line has been added, removed, or changed. Then it can only
+            re-highlight those lines for much better performance.
+          </p>
+          <p>
+            To improve performance even further, I implemented this algorithm in
+            <strong>Go</strong> and compiled it to <strong>WebAssembly</strong>.
+            This allows the algorithm to run at near-native speed in the
+            browser, making it much faster than if it were implemented in
+            JavaScript. This was my first time using Go and WebAssembly, and it
+            was a fun experience. I learned a lot about both technologies, and I
+            was able to improve the performance of the editor significantly.
+          </p>
         </section>
         <section ref="shortcuts">
           <h3 id="shortcuts" class="text-2xl font-semibold mt-8 mb-2">
