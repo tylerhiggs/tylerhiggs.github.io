@@ -8,10 +8,7 @@
     >
       <div v-for="(pos, i) in positions" :key="i" class="absolute" :style="pos">
         <div class="animate-float">
-          <SudokuAnimation
-            :animation-delay="i + 0.5"
-            :num="(i % 9) + 1 as (1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9)"
-          />
+          <SudokuAnimation :animation-delay="i + 0.5" :num="(i % 9) + 1" />
         </div>
       </div>
     </div>
@@ -54,6 +51,11 @@
         <TechChip icon="logos:typescript-icon" title="TypeScript" />
         <TechChip icon="i-heroicons:device-phone-mobile" title="Responsive" />
         <TechChip icon="simple-icons:githubactions" title="CI/CD" />
+        <TechChip icon="logos:playwright" title="Playwright" />
+        <TechChip
+          icon="logos:testing-library"
+          title="Angular Testing Library"
+        />
       </div>
       <p>
         I enjoy a relaxing game of Sudoku, but I just wanted to play the game
@@ -70,11 +72,79 @@
         SwiftUI, Rust, and Angular.
       </p>
       <iframe
-        src="https://www.youtube.com/embed/SZ3ziCQ8IhU"
+        src="https://www.youtube.com/embed/OFUqp00Cvc4"
         title="Sudoku web app"
         class="my-4 aspect-video w-full rounded-lg border border-neutral-200 dark:border-neutral-700"
         allowfullscreen
       ></iframe>
+      <section ref="multiplayer">
+        <h2 id="multiplayer" class="text-3xl font-semibold mt-12 mb-4">
+          Multiplayer Sudoku
+        </h2>
+        <p>
+          I added a collaboration mode that allows users in different locations
+          to work on the same puzzle together in real-time. Since I was already
+          using Firebase for this project, I decided to leverage Firebase
+          Realtime Database for the multiplayer functionality.
+        </p>
+        <p>
+          However, this presented an interesting challenge: Firebase's
+          architecture is primarily client-driven, which meant I couldn't rely
+          on a single server endpoint to ensure data consistency. For example, I
+          couldn't create an atomic endpoint that would read the current puzzle
+          state, apply changes, and write it back—all in one transaction. If the
+          client handled this logic, there would be a race condition where the
+          client's view of the puzzle could become stale between reading and
+          writing, potentially overwriting other users' changes.
+        </p>
+        <p>
+          To solve this, I implemented an
+          <strong>event-driven architecture</strong>. Instead of syncing entire
+          puzzle states, each user action (like placing a number or adding a
+          pencil mark) is broadcast as an individual event. All connected
+          clients listen for these events and apply them to their local puzzle
+          state. This approach eliminates the need for atomic state updates
+          while ensuring that every user's actions are preserved.
+        </p>
+        <p>
+          I also implemented <strong>optimistic updates</strong> to make the
+          experience feel snappy and responsive. When a user makes a move, it's
+          immediately reflected in their UI before being sent to Firebase. Once
+          the event comes back from the Realtime Database, the code checks for
+          conflicts—for instance, if two users tried to place different numbers
+          in the same cell at nearly the same time. The conflict resolution
+          logic ensures the puzzle state remains consistent across all clients,
+          giving everyone the same view of the game.
+        </p>
+        <p>
+          This event-driven, optimistic approach provides a smooth collaborative
+          experience while working within Firebase's constraints, proving that
+          you don't always need a traditional backend API to build robust
+          real-time features.
+        </p>
+        <p>
+          I knew this system was complex, and without proper testing, I could
+          never be fully confident in the consistency guarantees. That's where
+          <strong>Playwright</strong> came in. I wrote end-to-end tests that
+          simulate multiple clients editing the same cell at the same time,
+          verifying that the conflict resolution logic works correctly and that
+          all clients eventually converge to a consistent state.
+        </p>
+        <p>
+          Playwright was perfect for this because it can spawn multiple browser
+          contexts in parallel, each acting as a separate user. This allowed me
+          to create realistic race conditions—something that would be nearly
+          impossible to test reliably with unit tests alone. I could watch in
+          real-time as multiple "players" make conflicting moves, then assert
+          that the final puzzle state matches across all clients.
+        </p>
+        <p>
+          These tests gave me confidence that the multiplayer feature works as
+          intended, even under challenging conditions. They also serve as living
+          documentation of how the system behaves when things get messy, making
+          it easier to maintain and extend the feature in the future.
+        </p>
+      </section>
       <section ref="frontend">
         <h2 id="frontend" class="text-3xl font-semibold mt-12 mb-4">
           Angular Frontend
@@ -324,6 +394,7 @@ const positions = [
   { right: "12%", top: "75%" },
 ];
 
+const multiplayerSection = useTemplateRef("multiplayer");
 const frontendSection = useTemplateRef("frontend");
 const firstTrySection = useTemplateRef("first-try");
 const rustSection = useTemplateRef("rust");
@@ -331,6 +402,7 @@ const serverSection = useTemplateRef("server");
 const databaseSection = useTemplateRef("database");
 const clientStorageSection = useTemplateRef("client-storage");
 
+const multiplayerSectionVisible = useElementVisibility(multiplayerSection);
 const frontendSectionVisible = useElementVisibility(frontendSection);
 const firstTrySectionVisible = useElementVisibility(firstTrySection);
 const rustSectionVisible = useElementVisibility(rustSection);
@@ -341,6 +413,12 @@ const clientStorageSectionVisible = useElementVisibility(clientStorageSection);
 const outlineItems = computed(
   () =>
     [
+      {
+        id: "multiplayer",
+        label: "Multiplayer Sudoku",
+        items: [],
+        isVisible: multiplayerSectionVisible.value,
+      },
       {
         id: "frontend",
         label: "Angular Frontend",

@@ -209,6 +209,7 @@
                 title="Responsive"
               />
               <TechChip icon="simple-icons:githubactions" title="CI/CD" />
+              <TechChip icon="logos:playwright" title="Playwright" />
               <TechChip
                 icon="logos:testing-library"
                 title="Angular Testing Library"
@@ -218,25 +219,20 @@
               Rust puzzle generator and solver publishes puzzles to a Node
               server which saves them to a Firebase database. Angular frontend
               fetches and displays puzzles with a clean, responsive UI. Features
-              include pencil marks, hints, and multiple difficulty levels. CI/CD
-              pipeline runs unit tests and deploys to Firebase Hosting.
-              IndexedDB is used for local storage and offline support.
+              include pencil marks and multiple difficulty levels. CI/CD
+              pipeline runs unit and end-to-end tests and deploys to Firebase
+              Hosting. IndexedDB is used for local storage and offline support.
             </p>
             <p>
-              I first build this project with Swift and SwiftUI for iOS,
-              generating puzzles as the user chooses difficulty and solving them
-              on-device. I experienced performance issues generating hard
-              puzzles on the fly, and I made small improvements by taking
-              advantage of multi-core processing, but it still wasn't fast
-              enough.
-            </p>
-            <p>
-              Building a web version was significantly easier than iOS, and
-              delivered nearly the same functionality with less complexity,
-              showing me mobile apps really should only be built when absolutely
-              necessary. And generating puzzles asynchronously on a server is
-              much faster than on-device, allowing for a much better user
-              experience.
+              Later on I thought it would be cool to make the games
+              collaborative, so I added real-time multiplayer using Firebase
+              real-time database. This was a fun challenge to implement, as I
+              had to think about how to handle conflicts and merging changes
+              from multiple users. I used an event-driven architecture and
+              optimistic updates to make the experience as smooth as possible.
+              To ensure consistency, I added end-to-end testing with Playwright
+              to cover concurrent multi-user edge cases, including editing the
+              same cell at the same time. I also added a chat feature!
             </p>
           </ProjectCard>
           <ProjectCard

@@ -21,6 +21,7 @@
             rel="noopener noreferrer"
             >LinkedIn</a
           >
+          | <a href="/TylerHiggs-Resume.pdf" target="_blank">Resume</a>
         </p>
       </div>
     </footer>

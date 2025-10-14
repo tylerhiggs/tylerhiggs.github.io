@@ -8,11 +8,10 @@
         width="80"
         height="80"
         fill="none"
-        stroke="#333"
-        stroke-width="2"
         stroke-dasharray="320"
         stroke-dashoffset="320"
-        class="box-animation"
+        class="box-animation stroke-gray-300 dark:stroke-gray-700"
+        stroke-width="2"
       />
 
       <!-- Hand-written number -->
@@ -21,13 +20,12 @@
         :key="num"
         :d="numberPath"
         fill="none"
-        stroke="#333"
         stroke-width="3"
         stroke-linecap="round"
         stroke-linejoin="round"
         :stroke-dasharray="`${numberLength}, 10000`"
         :stroke-dashoffset="`${numberLength}`"
-        class="number-animation"
+        class="number-animation stroke-gray-300 dark:stroke-gray-700"
       />
     </svg>
   </div>
