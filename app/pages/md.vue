@@ -169,6 +169,8 @@ console.log(
         <TechChip icon="simple-icons:drizzle" title="Drizzle ORM" />
         <TechChip icon="logos:tailwindcss-icon" title="Tailwind CSS" />
         <TechChip icon="logos:typescript-icon" title="TypeScript" />
+        <TechChip icon="logos:go" />
+        <TechChip icon="vscode-icons:file-type-wasm" title="WebAssembly" />
         <TechChip icon="logos:cloudflare-icon" title="Cloudflare" />
         <TechChip icon="i-heroicons:magnifying-glass" title="SEO" />
         <TechChip icon="i-heroicons:server-stack" title="SSR" />
