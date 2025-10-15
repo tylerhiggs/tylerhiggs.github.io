@@ -16,7 +16,7 @@
 
       <!-- Hand-written number -->
       <path
-        ref="numberPath"
+        ref="numberPathRef"
         :key="num"
         :d="numberPath"
         fill="none"
@@ -37,9 +37,9 @@ const props = defineProps<{
   num: keyof typeof numberPaths;
 }>();
 const delayString = computed(() => `${props.animationDelay}s`);
-const numberRef = useTemplateRef("numberPath");
+const numberRef = useTemplateRef("numberPathRef");
 const numberLength = computed(
-  () => `${numberRef.value ? numberRef.value.getTotalLength() : 100}`
+  () => `${numberRef.value ? numberRef.value.getTotalLength() : 1000}`
 );
 
 const numberPaths = {
@@ -66,12 +66,20 @@ const numberPath = computed(() => numberPaths[props.num]);
 }
 
 .box-animation {
-  animation: drawBox 5s ease-in-out v-bind(delayString) forwards;
+  animation-name: drawBox;
+  animation-duration: 5s;
+  animation-timing-function: ease-in-out;
+  animation-delay: v-bind(delayString);
+  animation-fill-mode: forwards;
   animation-iteration-count: infinite;
 }
 
 .number-animation {
-  animation: drawNumber 5s ease-in-out v-bind(delayString) forwards;
+  animation-name: drawNumber;
+  animation-duration: 5s;
+  animation-timing-function: ease-in-out;
+  animation-delay: v-bind(delayString);
+  animation-fill-mode: forwards;
   animation-iteration-count: infinite;
 }
 
