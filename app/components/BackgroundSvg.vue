@@ -59,20 +59,18 @@
   stroke-linejoin: round;
   animation: waveMove 6s cubic-bezier(0.4, 0, 0.2, 1) infinite alternate;
   animation-fill-mode: backwards;
+  will-change: transform;
 }
 
 @keyframes waveMove {
   0% {
     transform: translateY(0px);
-    filter: blur(0px);
   }
   50% {
     transform: translateY(-16px);
-    filter: blur(0.5px);
   }
   100% {
     transform: translateY(0px);
-    filter: blur(0px);
   }
 }
 </style>
