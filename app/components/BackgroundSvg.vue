@@ -1,10 +1,12 @@
 <!-- inspired by https://yujisatojr.github.io/react-portfolio-template/ 
  I improved this by making it an SVG instead of a png and adding animation -->
 <template>
-  <div class="background-svg-wrapper">
+  <div
+    class="fixed pointer-events-none inset-0 -z-1 h-screen w-screen overflow-hidden"
+  >
     <svg
       viewBox="0 0 1280 640"
-      class="background-svg"
+      class="h-screen w-screen block"
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
       focusable="false"
@@ -38,22 +40,6 @@
 </template>
 
 <style scoped>
-.background-svg-wrapper {
-  position: fixed;
-  inset: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: -1;
-  overflow: hidden;
-  pointer-events: none;
-}
-
-.background-svg {
-  width: 100vw;
-  height: 100vh;
-  display: block;
-}
-
 .ribbon-anim {
   stroke-linecap: round;
   stroke-linejoin: round;

@@ -8,7 +8,10 @@
     >
       <div v-for="(pos, i) in positions" :key="i" class="absolute" :style="pos">
         <div class="animate-float">
-          <SudokuAnimation :animation-delay="i + 0.5" :num="(i % 9) + 1" />
+          <SudokuAnimation
+            :animation-delay="i + 0.5"
+            :num="(((i % 9) + 1) as 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9)"
+          />
         </div>
       </div>
     </div>
