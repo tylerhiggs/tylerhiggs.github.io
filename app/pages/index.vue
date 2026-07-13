@@ -78,19 +78,79 @@
             my free time.
           </p>
           <p class="text-xl text-pretty">
-            Hauling hay and fixing equipment before sunrise on the farm taught
-            me grit. That drive carried me through MIT, where I excelled by
-            putting in extra hours and tackling tough problems head-on. In my
-            software engineering career, I've jumped into unfamiliar tech stacks
-            like C#, .NET, and Angular, quickly becoming the go-to resource for
-            my team. I thrive on learning quickly, solving challenging bugs, and
-            helping others succeed.
+            MIT graduate in Computer Science. I enjoy enjoy having the highest
+            possible impact, and learning as much as I can along the way.
           </p>
         </div>
       </section>
       <section>
         <h2 class="text-5xl font-semibold my-16 px-8 sm:px-0">Solo Projects</h2>
         <div class="grid grid-cols-1 xl:grid-cols-2 gap-8 mb-32">
+          <ProjectCard
+            title="Eave - Software for Home Inspectors"
+            link="/eave-inspect"
+            image-url="/eave-landing.png"
+            alt-text="Screenshot of Eave - Software for Home Inspectors"
+          >
+            <div class="flex flex-wrap gap-3 z-20 mb-4">
+              <a
+                href="https://eaveinspect.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex z-20 items-center gap-2 px-4 py-2 bg-violet-700 hover:bg-violet-800 hover:scale-105 text-white rounded-full text-sm font-medium transition-colors"
+              >
+                <UIcon name="heroicons:play" size="16" />
+                Live Demo
+              </a>
+              <a
+                href="https://eaveinspect.com/help"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex z-20 items-center gap-2 px-4 py-2 bg-gray-900 hover:bg-gray-800 hover:scale-105 text-white rounded-full text-sm font-medium transition-colors"
+              >
+                <UIcon name="heroicons:book-open" size="16" />
+                Help Docs
+              </a>
+            </div>
+            <div class="flex flex-wrap gap-2 mt-4">
+              <TechChip icon="logos:nuxt-icon" title="Nuxt" />
+              <TechChip icon="logos:vue" title="Vue" />
+              <TechChip icon="logos:oauth" title="OAuth" />
+              <TechChip icon="file-icons:sqlite" title="SQLite" />
+              <TechChip icon="simple-icons:drizzle" title="Drizzle ORM" />
+              <TechChip icon="logos:tailwindcss-icon" title="Tailwind CSS" />
+              <TechChip icon="logos:typescript-icon" title="TypeScript" />
+              <TechChip icon="logos:swift" title="Swift/iOS" />
+              <TechChip icon="logos:cloudflare-icon" title="Cloudflare" />
+              <TechChip icon="logos:stripe" title="Stripe" />
+              <TechChip icon="i-heroicons:magnifying-glass" title="SEO" />
+              <TechChip icon="i-heroicons:server-stack" title="SSR" />
+              <TechChip
+                icon="i-heroicons:device-phone-mobile"
+                title="Responsive"
+              />
+              <TechChip icon="i-lucide:accessibility" title="Accessibility" />
+              <TechChip icon="simple-icons:githubactions" title="CI/CD" />
+            </div>
+            <div class="flex flex-col gap-4">
+              <div>
+                <p>
+                  Solo SaaS startup providing software for home inspectors to
+                  create and manage inspection reports, from custom templates
+                  and on-site data entry to an automated warnings and
+                  home-care rules engine that flags issues as inspectors work.
+                </p>
+                <p>
+                  Inspectors publish signable, shareable reports, offer
+                  built-in client self-scheduling and free repair-request
+                  generation for buyer's agents, and run their business —
+                  including multi-user organizations and Stripe billing —
+                  from one app. A native Swift iOS app supports fast,
+                  offline-friendly data capture in the field.
+                </p>
+              </div>
+            </div>
+          </ProjectCard>
           <div class="[&_img]:contrast-175">
             <ProjectCard
               title="Extended Markdown Editor"
