@@ -137,16 +137,16 @@
                 <p>
                   Solo SaaS startup providing software for home inspectors to
                   create and manage inspection reports, from custom templates
-                  and on-site data entry to an automated warnings and
-                  home-care rules engine that flags issues as inspectors work.
+                  and on-site data entry to an automated warnings and home-care
+                  rules engine that flags issues as inspectors work.
                 </p>
                 <p>
-                  Inspectors publish signable, shareable reports, offer
-                  built-in client self-scheduling and free repair-request
-                  generation for buyer's agents, and run their business —
-                  including multi-user organizations and Stripe billing —
-                  from one app. A native Swift iOS app supports fast,
-                  offline-friendly data capture in the field.
+                  Inspectors publish signable, shareable reports, offer built-in
+                  client self-scheduling and free repair-request generation for
+                  buyer's agents, and run their business — including multi-user
+                  organizations and Stripe billing — from one app. A native
+                  Swift iOS app supports fast, offline-friendly data capture in
+                  the field.
                 </p>
               </div>
             </div>
@@ -422,7 +422,42 @@
         </h2>
         <div class="flex flex-col gap-12">
           <CompanyCard
-            title="Software Engineer II"
+            title="Software Engineer"
+            company="Offstream (Startup - ~10 employees)"
+            dates="Dec 2025 — Jun 2026"
+          >
+            <template #tech>
+              <TechChip icon="logos:nextjs" title="Next.js" />
+              <TechChip icon="logos:vercel-icon" title="Vercel" />
+              <TechChip icon="logos:typescript-icon" title="TypeScript" />
+              <TechChip icon="heroicons:circle-stack" title="SQL" />
+              <TechChip icon="i-lucide:accessibility" title="Accessibility" />
+              <TechChip icon="simple-icons:githubactions" title="CI/CD" />
+            </template>
+            <ul class="list-disc pl-6 space-y-2 text-lg">
+              <li>
+                Designed and implemented a public facing REST API for recording
+                carbon removal events, enabling carbon removal companies to
+                submit their data for verification and reporting.
+              </li>
+              <li>
+                Built an AI powered custom form builder for carbon removal
+                companies to submit their data.
+              </li>
+              <li>
+                Added data export functionality to our platform, creating full
+                auditability for carbon removal companies and enabling them to
+                share their data with third parties.
+              </li>
+              <li>
+                Implemented analytics tracking for our platform, allowing us to
+                better understand how users are interacting with our platform
+                and identify areas for improvement.
+              </li>
+            </ul>
+          </CompanyCard>
+          <CompanyCard
+            title="Software Engineer"
             company="Patterson - Fuse"
             dates="Jul 2023 — Sept 2025"
           >
@@ -471,7 +506,7 @@
             </ul>
           </CompanyCard>
           <CompanyCard
-            title="Software Engineer"
+            title="Software Engineer (Startup - ~60 employees)"
             company="Vividly"
             dates="Jul 2022 — Jun 2023"
           >
@@ -515,7 +550,7 @@
           </CompanyCard>
           <CompanyCard
             title="Software Engineer Intern"
-            company="Vividly"
+            company="Vividly (Startup - ~60 employees)"
             dates="Jun 2022 — Aug 2022"
           >
             <template #tech>
