@@ -443,6 +443,10 @@
               <TechChip icon="logos:graphql" title="GraphQL" />
               <TechChip icon="i-lucide:accessibility" title="Accessibility" />
               <TechChip icon="simple-icons:githubactions" title="CI/CD" />
+              <TechChip
+                icon="logos:testing-library"
+                title="React Testing Library"
+              />
             </template>
             <ul class="list-disc pl-6 space-y-2 text-lg">
               <li>
@@ -471,7 +475,7 @@
             </ul>
           </CompanyCard>
           <CompanyCard
-            title="Software Engineer II"
+            title="Software Engineer"
             company="Patterson - Fuse"
             dates="Jul 2023 — Aug 2025"
           >
