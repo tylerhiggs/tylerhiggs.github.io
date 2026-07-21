@@ -430,7 +430,7 @@
         <div class="flex flex-col gap-12">
           <CompanyCard
             title="Software Engineer"
-            company="Offstream (Startup - ~10 employees)"
+            company="Offstream (Startup ~10 employees)"
             dates="Dec 2025 — Jun 2026"
           >
             <template #tech>
@@ -521,7 +521,7 @@
           </CompanyCard>
           <CompanyCard
             title="Software Engineer"
-            company="Vividly (Startup - ~60 employees)"
+            company="Vividly (Startup ~60 employees)"
             dates="Jul 2022 — Jun 2023"
           >
             <template #tech>
@@ -564,7 +564,7 @@
           </CompanyCard>
           <CompanyCard
             title="Software Engineer Intern"
-            company="Vividly (Startup - ~60 employees)"
+            company="Vividly (Startup ~60 employees)"
             dates="Jun 2021 — Aug 2021"
           >
             <template #tech>
