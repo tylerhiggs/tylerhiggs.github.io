@@ -437,7 +437,10 @@
               <TechChip icon="logos:nextjs" title="Next.js" />
               <TechChip icon="logos:vercel-icon" title="Vercel" />
               <TechChip icon="logos:typescript-icon" title="TypeScript" />
-              <TechChip icon="heroicons:circle-stack" title="SQL" />
+              <TechChip icon="logos:tailwindcss-icon" title="Tailwind CSS" />
+              <TechChip icon="logos:prisma" title="Prisma" />
+              <TechChip icon="logos:postgresql" title="PostgreSQL" />
+              <TechChip icon="logos:graphql" title="GraphQL" />
               <TechChip icon="i-lucide:accessibility" title="Accessibility" />
               <TechChip icon="simple-icons:githubactions" title="CI/CD" />
             </template>
