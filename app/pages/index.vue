@@ -78,7 +78,7 @@
             my free time.
           </p>
           <p class="text-xl text-pretty">
-            MIT graduate in Computer Science. I enjoy enjoy having the highest
+            MIT graduate in Computer Science. I enjoy having the highest
             possible impact, and learning as much as I can along the way.
           </p>
         </div>
@@ -122,7 +122,8 @@
               <TechChip icon="logos:typescript-icon" title="TypeScript" />
               <TechChip icon="logos:swift" title="Swift/iOS" />
               <TechChip icon="logos:cloudflare-icon" title="Cloudflare" />
-              <TechChip icon="logos:stripe" title="Stripe" />
+              <TechChip icon="logos:stripe" title="Stripe Connect" />
+              <TechChip icon="logos:anthropic-icon" title="Claude API" />
               <TechChip icon="i-heroicons:magnifying-glass" title="SEO" />
               <TechChip icon="i-heroicons:server-stack" title="SSR" />
               <TechChip
@@ -138,15 +139,21 @@
                   Solo SaaS startup providing software for home inspectors to
                   create and manage inspection reports, from custom templates
                   and on-site data entry to an automated warnings and home-care
-                  rules engine that flags issues as inspectors work.
+                  rules engine that flags issues as inspectors work. New users
+                  can migrate a template out of Spectora or HomeGauge in one
+                  step: an AI import pipeline built on Claude with structured
+                  outputs rebuilds their existing export as an editable Eave
+                  template.
                 </p>
                 <p>
-                  Inspectors publish signable, shareable reports, offer built-in
-                  client self-scheduling and free repair-request generation for
-                  buyer's agents, and run their business — including multi-user
-                  organizations and Stripe billing — from one app. A native
-                  Swift iOS app supports fast, offline-friendly data capture in
-                  the field.
+                  Inspectors publish signable, shareable reports, collect
+                  e-signed pre-inspection agreements, take client payments by
+                  card or ACH through Stripe Connect, offer built-in client
+                  self-scheduling and free repair-request generation for buyer's
+                  agents, and run their business — including multi-user
+                  organizations and Stripe subscription billing — from one app.
+                  A native Swift iOS app supports fast, offline-friendly data
+                  capture in the field.
                 </p>
               </div>
             </div>
@@ -450,6 +457,10 @@
                 share their data with third parties.
               </li>
               <li>
+                Implemented record locking for submissions under review,
+                preventing edits mid-audit and preserving audit integrity.
+              </li>
+              <li>
                 Implemented analytics tracking for our platform, allowing us to
                 better understand how users are interacting with our platform
                 and identify areas for improvement.
@@ -457,9 +468,9 @@
             </ul>
           </CompanyCard>
           <CompanyCard
-            title="Software Engineer"
+            title="Software Engineer II"
             company="Patterson - Fuse"
-            dates="Jul 2023 — Sept 2025"
+            dates="Jul 2023 — Aug 2025"
           >
             <template #tech>
               <TechChip icon="logos:angular-icon" title="Angular" />
@@ -506,8 +517,8 @@
             </ul>
           </CompanyCard>
           <CompanyCard
-            title="Software Engineer (Startup - ~60 employees)"
-            company="Vividly"
+            title="Software Engineer"
+            company="Vividly (Startup - ~60 employees)"
             dates="Jul 2022 — Jun 2023"
           >
             <template #tech>
@@ -551,7 +562,7 @@
           <CompanyCard
             title="Software Engineer Intern"
             company="Vividly (Startup - ~60 employees)"
-            dates="Jun 2022 — Aug 2022"
+            dates="Jun 2021 — Aug 2021"
           >
             <template #tech>
               <TechChip icon="logos:react" title="React" />
@@ -603,7 +614,7 @@ definePageMeta({
     {
       name: "keywords",
       content:
-        "Tyler Higgs, Software Engineer, Full Stack Developer, Web Developer, Nuxt, Vue, TypeScript, Tailwind CSS, Cloudflare, Accessibility, SEO, SSR",
+        "Tyler Higgs, Software Engineer, Full Stack Developer, Web Developer, Nuxt, Vue, TypeScript, Tailwind CSS, Cloudflare, Stripe, Swift, iOS, AI, Claude API, Accessibility, SEO, SSR",
     },
   ],
 });

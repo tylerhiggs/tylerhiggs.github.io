@@ -42,7 +42,8 @@
         <TechChip icon="logos:typescript-icon" title="TypeScript" />
         <TechChip icon="logos:swift" title="Swift/iOS" />
         <TechChip icon="logos:cloudflare-icon" title="Cloudflare" />
-        <TechChip icon="logos:stripe" title="Stripe" />
+        <TechChip icon="logos:stripe" title="Stripe Connect" />
+        <TechChip icon="logos:anthropic-icon" title="Claude API" />
         <TechChip icon="i-heroicons:magnifying-glass" title="SEO" />
         <TechChip icon="i-heroicons:server-stack" title="SSR" />
         <TechChip icon="i-heroicons:device-phone-mobile" title="Responsive" />
@@ -60,10 +61,11 @@
       </p>
       <p>
         It's a full-stack project in the truest sense — a Nuxt/Vue web app, a
-        native Swift iOS app, a SQLite database behind Drizzle ORM, Stripe
-        billing, and deployment on Cloudflare, all designed and shipped by me
-        alone. The sections below walk through the major feature areas and the
-        engineering decisions behind each one.
+        native Swift iOS app, a SQLite database behind Drizzle ORM, two separate
+        Stripe integrations (my subscriptions and my customers' client
+        payments), an AI import pipeline, and deployment on Cloudflare, all
+        designed and shipped by me alone. The sections below walk through the
+        major feature areas and the engineering decisions behind each one.
       </p>
       <div class="flex items-center">
         <NuxtPicture
@@ -93,7 +95,7 @@
         </p>
         <div class="flex items-center">
           <NuxtPicture
-            class="w-full rounded-lg shadow-lg my-4"
+            class="w-full rounded-lg my-4"
             src="/templates.png"
             alt="Screenshot of the Eave template library"
             sizes="sm:600px md:800px lg:1400px"
@@ -121,7 +123,7 @@
         </p>
         <div class="flex items-center">
           <NuxtPicture
-            class="w-full rounded-lg shadow-lg my-4"
+            class="w-full rounded-lg my-4"
             src="/edit-template.png"
             alt="Screenshot of the Eave template editor"
             sizes="sm:600px md:800px lg:1400px"
@@ -144,6 +146,60 @@
         >
       </section>
 
+      <section ref="templateImport">
+        <h2 id="template-import" class="text-3xl font-semibold mt-12 mb-4">
+          AI Template Import (Claude + Structured Outputs)
+        </h2>
+        <p>
+          The biggest thing standing between an inspector and switching software
+          is the template they've spent years refining in Spectora or HomeGauge.
+          So Eave imports it: drop in an export — CSV, Excel, PDF, plain text,
+          or HTML — and it comes back as a fully editable Eave template with the
+          original sections, subsections, and fields intact.
+        </p>
+        <div class="flex items-center">
+          <NuxtPicture
+            class="w-full rounded-lg my-4"
+            src="/template-import-modal.png"
+            alt="Screenshot of the Eave template import modal"
+            sizes="sm:600px md:800px lg:1400px"
+            format="webp"
+            placeholder
+          />
+        </div>
+        <p>
+          I split the pipeline into a
+          <strong>deterministic ingest layer</strong> and a
+          <strong>probabilistic transform layer</strong>. Ingest only cares
+          about the container format — spreadsheets through <code>xlsx</code>,
+          PDFs through <code>unpdf</code> — and produces raw text with a hard
+          cap on size. Interpretation is Claude's job: the extracted text goes
+          out with a source-specific system prompt (Spectora and HomeGauge each
+          have their own comment taxonomy worth explaining to the model) and a
+          Zod schema as a structured-output contract, so what comes back is
+          validated into the same typed template schema the hand-built editor
+          produces. Anything the model gets wrong is just a normal template the
+          inspector can edit — the import is a head start, not a black box.
+        </p>
+        <p>
+          The interesting constraint was the runtime. Cloudflare Workers cancel
+          background work shortly after a response is sent, and a large template
+          can take minutes to transform — so this can't be a fire-and-forget job
+          behind a polling endpoint. Instead the transform runs inside a
+          held-open SSE request that streams progress back to the browser while
+          it works, and the extracted text is persisted before the model is ever
+          called, so a dropped connection or a failed transform can be retried
+          with one click and no re-upload.
+        </p>
+        <a
+          href="https://eaveinspect.com/help/templates/importing-a-template"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-blue-600 hover:underline"
+          >Full guide: Importing a template →</a
+        >
+      </section>
+
       <section ref="warningsEngine">
         <h2 id="warnings-engine" class="text-3xl font-semibold mt-12 mb-4">
           Automated Warnings &amp; Home-Care Rules Engine
@@ -160,7 +216,7 @@
         </p>
         <div class="flex items-center">
           <NuxtPicture
-            class="w-full rounded-lg shadow-lg my-4"
+            class="w-full rounded-lg my-4"
             src="/warnings-page.png"
             alt="Screenshot of the Eave warnings page"
             sizes="sm:600px md:800px lg:1400px"
@@ -184,7 +240,7 @@
         </p>
         <div class="flex items-center">
           <NuxtPicture
-            class="w-full rounded-lg shadow-lg my-4"
+            class="w-full rounded-lg my-4"
             src="/home-care-tips.png"
             alt="Screenshot of the Eave home-care tips page"
             sizes="sm:600px md:800px lg:1400px"
@@ -223,7 +279,7 @@
         </p>
         <div class="flex items-center">
           <NuxtPicture
-            class="w-full rounded-lg shadow-lg my-4"
+            class="w-full rounded-lg my-4"
             src="/preview-report.png"
             alt="Screenshot of an Eave report preview"
             sizes="sm:600px md:800px lg:1400px"
@@ -237,14 +293,16 @@
           before it's stored — no point uploading a multi-megabyte photo of a
           signature. Publishing itself is gated behind a profile-completeness
           check (license number, business info, and a signature all need to be
-          on file), and several of these capabilities — publishing to clients,
-          agreements, and republishing — are gated behind the paid tier, which
-          meant threading subscription status through the publish flow cleanly
-          rather than bolting a paywall on top of it.
+          on file). Whether a published report locks is the inspector's call,
+          set per inspection at creation time: auditable reports freeze on
+          publish for a clean paper trail, while the rest stay editable and
+          simply mark their generated PDF stale, so the next download
+          regenerates it instead of serving something that no longer matches the
+          report.
         </p>
         <div class="flex items-center">
           <NuxtPicture
-            class="w-full rounded-lg shadow-lg my-4"
+            class="w-full rounded-lg my-4"
             src="/user-signature.png"
             alt="Screenshot of the Eave signature settings page"
             sizes="sm:600px md:800px lg:1400px"
@@ -267,6 +325,137 @@
         >
       </section>
 
+      <section ref="agreements">
+        <h2 id="agreements" class="text-3xl font-semibold mt-12 mb-4">
+          Pre-Inspection Agreements &amp; E-Signing
+        </h2>
+        <p>
+          Inspectors are supposed to have a signed agreement before they ever
+          walk the property, and most of them chase it over email. In Eave they
+          write the agreement once, attach it to an inspection (at creation, or
+          later from the deliver page), and every client with an email address
+          automatically gets a signing link. The client types their legal name,
+          checks an "I agree" box, signs, and a signed PDF is stored on the
+          inspection.
+        </p>
+        <div class="flex items-center">
+          <NuxtPicture
+            class="w-full rounded-lg my-4"
+            src="/agreement-editor.png"
+            alt="Screenshot of the Eave agreement editor"
+            sizes="sm:600px md:800px lg:1400px"
+            format="webp"
+            placeholder
+          />
+        </div>
+        <p>
+          The design decision I care about here is that agreements are
+          <strong>snapshotted, not referenced</strong>. An agreement template is
+          copied onto the inspection at the moment it's attached, so later edits
+          to the template can never retroactively change the document a client
+          already signed — the same reason you don't render a legal document
+          from mutable state. The signed copy is what the inspector can point to
+          a year later if a claim comes up.
+        </p>
+        <div class="flex items-center">
+          <NuxtPicture
+            class="w-full rounded-lg my-4"
+            src="/agreement-client-sign.png"
+            alt="Screenshot of a client signing an Eave agreement"
+            sizes="sm:600px md:800px lg:1400px"
+            format="webp"
+            placeholder
+          />
+        </div>
+        <p>
+          An unsigned agreement also locks the published report: anyone opening
+          the report link gets a "review &amp; sign" screen instead of the
+          findings, and it unlocks the instant someone signs. Since payment can
+          gate the report too, the two locks are resolved as an explicit,
+          ordered chain — sign, then pay, then read — so a client never hits two
+          walls in a row without knowing which one they're on.
+        </p>
+        <a
+          href="https://eaveinspect.com/help/agreements/overview"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-blue-600 hover:underline"
+          >Full guide: Pre-inspection agreements →</a
+        >
+      </section>
+
+      <section ref="payments">
+        <h2 id="payments" class="text-3xl font-semibold mt-12 mb-4">
+          Client Payments (Stripe Connect)
+        </h2>
+        <p>
+          Inspectors collect their fee through Eave: the client gets a pay link
+          (manually, or emailed automatically on creation or publish, with
+          optional reminders) and pays by card, Apple Pay, Google Pay, or ACH
+          bank transfer. The inspection marks itself paid, the inspector is
+          notified, and the client gets a receipt. Inspectors can also require
+          payment before the report unlocks.
+        </p>
+        <div class="flex items-center">
+          <NuxtPicture
+            class="w-full rounded-lg my-4"
+            src="/payments-client-page.png"
+            alt="Screenshot of the Eave client payment page"
+            sizes="sm:600px md:800px lg:1400px"
+            format="webp"
+            placeholder
+          />
+        </div>
+        <p>
+          This is built on
+          <strong>Stripe Connect Express with direct charges</strong> — each
+          inspector onboards their own connected account and the charge is
+          created on it, so the money never touches a platform balance and
+          Stripe handles KYC, payouts, refunds, and disputes. That's a
+          deliberate positioning choice as much as an architectural one:
+          competitors take 3–4% of every inspection fee, while Eave's platform
+          fee is wired up and set to zero. It's also a second, completely
+          separate Stripe integration from the SaaS subscription — its own
+          webhook endpoint and signing secret — and the one security invariant
+          that matters is that Checkout metadata is attacker-controllable, so
+          every payment event verifies the connected account that sent it
+          actually owns the inspection it names.
+        </p>
+        <div class="flex items-center">
+          <NuxtPicture
+            class="w-full rounded-lg my-4"
+            src="/payments-settings.png"
+            alt="Screenshot of the Eave payment settings page"
+            sizes="sm:600px md:800px lg:1400px"
+            format="webp"
+            placeholder
+          />
+        </div>
+        <p>
+          ACH made this a real state machine rather than a boolean. A bank
+          transfer completes checkout without the money existing yet, so a
+          payment moves through processing → paid or failed over several days,
+          asynchronously, on webhooks that can arrive out of order, duplicated,
+          or race the browser redirect. I kept a single timestamp as the source
+          of truth for "actually paid", made Stripe events refuse to overwrite a
+          payment the inspector recorded by hand, scoped idempotency to the
+          Checkout Session so a re-collection after a refund still works, and
+          pulled all of it into pure functions with unit tests — which matters
+          more than usual on Cloudflare D1, where there are no interactive
+          transactions to hide behind. The report gate deliberately
+          <strong>fails open</strong>: if the inspector's account is restricted
+          or the fee is zero, the report unlocks rather than trapping a client
+          behind a payment they can't make.
+        </p>
+        <a
+          href="https://eaveinspect.com/help/payments/overview"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-blue-600 hover:underline"
+          >Full guide: Payments overview →</a
+        >
+      </section>
+
       <section ref="scheduling">
         <h2 id="scheduling" class="text-3xl font-semibold mt-12 mb-4">
           Built-in Client Scheduling
@@ -283,7 +472,7 @@
         </p>
         <div class="flex items-center">
           <NuxtPicture
-            class="w-full rounded-lg shadow-lg my-4"
+            class="w-full rounded-lg my-4"
             src="/client-pick-date.png"
             alt="Screenshot of the Eave client booking calendar"
             sizes="sm:600px md:800px lg:1400px"
@@ -303,7 +492,7 @@
         </p>
         <div class="flex items-center">
           <NuxtPicture
-            class="w-full rounded-lg shadow-lg my-4"
+            class="w-full rounded-lg my-4"
             src="/client-schedule-confirmed.png"
             alt="Screenshot of a confirmed Eave client booking"
             sizes="sm:600px md:800px lg:1400px"
@@ -342,7 +531,7 @@
         </p>
         <div class="flex items-center">
           <NuxtPicture
-            class="w-full rounded-lg shadow-lg my-4"
+            class="w-full rounded-lg my-4"
             src="/repair-requests-editor.png"
             alt="Screenshot of the Eave repair request editor"
             sizes="sm:600px md:800px lg:1400px"
@@ -362,7 +551,7 @@
         </p>
         <div class="flex items-center">
           <NuxtPicture
-            class="w-full rounded-lg shadow-lg my-4"
+            class="w-full rounded-lg my-4"
             src="/view-repair-request.png"
             alt="Screenshot of a finished Eave repair request"
             sizes="sm:600px md:800px lg:1400px"
@@ -401,7 +590,7 @@
         </p>
         <div class="flex items-center">
           <NuxtPicture
-            class="w-full rounded-lg shadow-lg my-4"
+            class="w-full rounded-lg my-4"
             src="/eave-mobile-add-inspection.png"
             alt="Screenshot of adding an inspection on Eave mobile web"
             sizes="sm:600px md:800px lg:1400px"
@@ -422,7 +611,7 @@
         </p>
         <div class="flex items-center">
           <NuxtPicture
-            class="w-full rounded-lg shadow-lg my-4"
+            class="w-full rounded-lg my-4"
             src="/ios-fields.png"
             alt="Screenshot of the Eave iOS app filling out fields"
             sizes="sm:600px md:800px lg:1400px"
@@ -459,7 +648,7 @@
         </p>
         <div class="flex items-center">
           <NuxtPicture
-            class="w-full rounded-lg shadow-lg my-4"
+            class="w-full rounded-lg my-4"
             src="/org-templates.png"
             alt="Screenshot of shared templates within an Eave organization"
             sizes="sm:600px md:800px lg:1400px"
@@ -478,7 +667,7 @@
         </p>
         <div class="flex items-center">
           <NuxtPicture
-            class="w-full rounded-lg shadow-lg my-4"
+            class="w-full rounded-lg my-4"
             src="/invitations.png"
             alt="Screenshot of organization invitations in Eave"
             sizes="sm:600px md:800px lg:1400px"
@@ -501,17 +690,16 @@
         </h2>
         <p>
           The free tier lets an inspector run up to 5 inspections with no card
-          required and no time limit, which is enough to genuinely try the
-          product on real jobs before paying. Eave Inspect Pro removes the
-          inspection cap and unlocks photo/video attachments, publishing reports
-          to clients, e-signatures, custom templates, and republishing. Billing
-          is per-seat through Stripe — one subscription per user rather than per
-          organization — with Stripe's customer portal handling self-serve plan
-          management.
+          required and no time limit — enough to genuinely try the product on
+          real jobs, with every feature turned on, before paying. Eave Inspect
+          Pro ($10/month, price locked for the life of the account) removes the
+          cap. Billing is per-seat through Stripe — one subscription per user
+          rather than per organization — with Stripe's customer portal handling
+          self-serve plan management.
         </p>
         <div class="flex items-center">
           <NuxtPicture
-            class="w-full rounded-lg shadow-lg my-4"
+            class="w-full rounded-lg my-4"
             src="/pro-billing.png"
             alt="Screenshot of the Eave Pro billing page"
             sizes="sm:600px md:800px lg:1400px"
@@ -523,11 +711,14 @@
           Per-seat rather than per-org billing keeps the pricing model simple to
           reason about for both sides — an org isn't blocked from adding a
           teammate by a shared seat pool, and I don't have to reconcile who
-          "owns" the subscription when org membership changes. Feature gating
-          (publishing, e-signatures, custom templates) checks subscription
-          status at the point of use, which is what keeps the paywall from
-          leaking into every corner of the codebase as a bunch of scattered
-          conditionals.
+          "owns" the subscription when org membership changes. I also moved
+          deliberately away from a hard paywall: rather than middleware guarding
+          every route and a subscription check scattered through every feature,
+          the entire gate is one check at the single action that costs me
+          anything — creating an inspection. Everything else, including data an
+          unsubscribed user has already created, stays fully accessible. Far
+          less code, far fewer ways to accidentally lock a paying customer out
+          of their own reports.
         </p>
         <a
           href="https://eaveinspect.com/help/billing/subscriptions"
@@ -553,13 +744,16 @@ import type { Item } from "~/types";
 useSeoMeta({
   title: "Eave - Software for Home Inspectors",
   description:
-    "A solo SaaS product for home inspectors: custom templates, an automated warnings engine, e-signatures, client scheduling, repair requests, and a native iOS app.",
+    "A solo SaaS product for home inspectors: custom templates, AI template import with Claude, an automated warnings engine, e-signed agreements, Stripe Connect payments, client scheduling, repair requests, and a native iOS app.",
 });
 useHead({ title: "Eave - Software for Home Inspectors" });
 
 const templatesSection = useTemplateRef("templates");
+const templateImportSection = useTemplateRef("templateImport");
 const warningsEngineSection = useTemplateRef("warningsEngine");
 const publishingSection = useTemplateRef("publishing");
+const agreementsSection = useTemplateRef("agreements");
+const paymentsSection = useTemplateRef("payments");
 const schedulingSection = useTemplateRef("scheduling");
 const repairRequestsSection = useTemplateRef("repairRequests");
 const mobileIosSection = useTemplateRef("mobileIos");
@@ -570,7 +764,12 @@ const templatesSectionVisible = useElementVisibility(templatesSection);
 const warningsEngineSectionVisible = useElementVisibility(
   warningsEngineSection,
 );
+const templateImportSectionVisible = useElementVisibility(
+  templateImportSection,
+);
 const publishingSectionVisible = useElementVisibility(publishingSection);
+const agreementsSectionVisible = useElementVisibility(agreementsSection);
+const paymentsSectionVisible = useElementVisibility(paymentsSection);
 const schedulingSectionVisible = useElementVisibility(schedulingSection);
 const repairRequestsSectionVisible = useElementVisibility(
   repairRequestsSection,
@@ -589,6 +788,12 @@ const outlineItems = computed(
         isVisible: templatesSectionVisible.value,
       },
       {
+        id: "template-import",
+        label: "AI Template Import",
+        items: [],
+        isVisible: templateImportSectionVisible.value,
+      },
+      {
         id: "warnings-engine",
         label: "Warnings & Home-Care Rules Engine",
         items: [],
@@ -599,6 +804,18 @@ const outlineItems = computed(
         label: "Publishing & E-Signatures",
         items: [],
         isVisible: publishingSectionVisible.value,
+      },
+      {
+        id: "agreements",
+        label: "Agreements & E-Signing",
+        items: [],
+        isVisible: agreementsSectionVisible.value,
+      },
+      {
+        id: "payments",
+        label: "Client Payments (Stripe Connect)",
+        items: [],
+        isVisible: paymentsSectionVisible.value,
       },
       {
         id: "scheduling",
