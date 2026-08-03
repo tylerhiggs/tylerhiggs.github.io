@@ -424,6 +424,75 @@
         </div>
       </section>
       <section>
+        <h2 class="text-5xl font-semibold my-16 px-8 sm:px-0">Research</h2>
+        <div class="grid grid-cols-1 xl:grid-cols-2 gap-8 mb-32">
+          <ProjectCard
+            title="Running a State-of-the-Art Segmentation Model on One GPU"
+            link="/segmentation"
+            image-url="/segmentation-cityscapes.png"
+            alt-text="A semantic segmentation from the Cityscapes dataset, where pedestrians, cyclists, cars, road and vegetation are each filled in with a different color"
+          >
+            <div class="flex flex-wrap gap-3 z-20 mb-4">
+              <a
+                href="/Segmentation_Final_Project.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex z-20 items-center gap-2 px-4 py-2 bg-violet-700 hover:bg-violet-800 hover:scale-105 text-white rounded-full text-sm font-medium transition-colors"
+              >
+                <UIcon name="heroicons:document-text" size="16" />
+                Read the Paper
+              </a>
+              <a
+                href="https://github.com/tylerhiggs/Res18GSCNN"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex z-20 items-center gap-2 px-4 py-2 bg-gray-900 hover:bg-gray-800 hover:scale-105 text-white rounded-full text-sm font-medium transition-colors"
+              >
+                <UIcon name="mdi:github" size="16" />
+                Res18GSCNN
+              </a>
+              <a
+                href="https://github.com/tylerhiggs/Res18GSCNNmodified"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex z-20 items-center gap-2 px-4 py-2 bg-gray-900 hover:bg-gray-800 hover:scale-105 text-white rounded-full text-sm font-medium transition-colors"
+              >
+                <UIcon name="mdi:github" size="16" />
+                Res18GSCNN (modified)
+              </a>
+            </div>
+            <div class="flex flex-wrap gap-2 mt-4">
+              <TechChip icon="logos:python" title="Python" />
+              <TechChip icon="logos:pytorch-icon" title="PyTorch" />
+              <TechChip icon="logos:nvidia" title="CUDA" />
+              <TechChip
+                icon="i-heroicons:squares-2x2"
+                title="Semantic Segmentation"
+              />
+              <TechChip icon="i-heroicons:cpu-chip" title="CNNs" />
+              <TechChip icon="i-heroicons:photo" title="Cityscapes" />
+              <TechChip icon="i-heroicons:academic-cap" title="MIT 6.819" />
+            </div>
+            <p>
+              My final project for MIT 6.819/6.869, Advances in Computer Vision.
+              The leading semantic segmentation network at the time, the Gated
+              Shape CNN, was trained on 8 GPUs and its own repository warned that
+              it would not run on one. People had filed issues asking for a
+              lighter version and nobody had published one, so I reimplemented it
+              with a ResNet-18 backbone that trains on a single GPU and released
+              it.
+            </p>
+            <p>
+              I also tested an idea: GSCNN only lets its color-and-texture stream
+              feed into its shape stream, but semantic edges ought to help
+              predict semantics too. I added a connection back the other way. It
+              made the network significantly worse — a negative result, and my
+              favorite thing I learned in the class.
+            </p>
+          </ProjectCard>
+        </div>
+      </section>
+      <section>
         <h2 class="text-5xl font-semibold my-16 px-8 sm:px-0">
           Work Experience
         </h2>
@@ -626,7 +695,7 @@ definePageMeta({
     {
       name: "keywords",
       content:
-        "Tyler Higgs, Software Engineer, Full Stack Developer, Web Developer, Nuxt, Vue, TypeScript, Tailwind CSS, Cloudflare, Stripe, Swift, iOS, AI, Claude API, Accessibility, SEO, SSR",
+        "Tyler Higgs, Software Engineer, Full Stack Developer, Web Developer, Nuxt, Vue, TypeScript, Tailwind CSS, Cloudflare, Stripe, Swift, iOS, AI, Claude API, Accessibility, SEO, SSR, Computer Vision, PyTorch, Semantic Segmentation, CNN, MIT",
     },
   ],
 });
