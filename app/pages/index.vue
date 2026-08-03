@@ -472,6 +472,11 @@
                 better understand how users are interacting with our platform
                 and identify areas for improvement.
               </li>
+              <li>
+                Improved <strong>dashboard performance by 8x</strong> by
+                optimizing GraphQL and SQL queries, reducing load times and
+                improving user experience.
+              </li>
             </ul>
           </CompanyCard>
           <CompanyCard
