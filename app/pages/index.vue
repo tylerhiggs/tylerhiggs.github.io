@@ -476,18 +476,18 @@
             <p>
               My final project for MIT 6.819/6.869, Advances in Computer Vision.
               The leading semantic segmentation network at the time, the Gated
-              Shape CNN, was trained on 8 GPUs and its own repository warned that
-              it would not run on one. People had filed issues asking for a
-              lighter version and nobody had published one, so I reimplemented it
-              with a ResNet-18 backbone that trains on a single GPU and released
-              it.
+              Shape CNN, was trained on 8 GPUs and its own repository warned
+              that it would not run on one. People had filed issues asking for a
+              lighter version and nobody had published one, so I reimplemented
+              it with a ResNet-18 backbone that trains on a single GPU and
+              released it.
             </p>
             <p>
-              I also tested an idea: GSCNN only lets its color-and-texture stream
-              feed into its shape stream, but semantic edges ought to help
-              predict semantics too. I added a connection back the other way. It
-              made the network significantly worse — a negative result, and my
-              favorite thing I learned in the class.
+              I also tested an idea: GSCNN only lets its color-and-texture
+              stream feed into its shape stream, but semantic edges ought to
+              help predict semantics too. I added a connection back the other
+              way. It made the network significantly worse — a negative result,
+              and my favorite thing I learned in the class.
             </p>
           </ProjectCard>
         </div>
@@ -545,6 +545,12 @@
                 Improved <strong>dashboard performance by 8x</strong> by
                 optimizing GraphQL and SQL queries, reducing load times and
                 improving user experience.
+              </li>
+              <li>
+                Built an AI-powered answer recommendation system that surfaces
+                suggested responses for new submissions by matching previously
+                accepted registry answers and users' prior answers across
+                differently structured custom forms
               </li>
             </ul>
           </CompanyCard>
