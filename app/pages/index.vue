@@ -556,7 +556,7 @@
           </CompanyCard>
           <CompanyCard
             title="Software Engineer"
-            company="Patterson - Fuse"
+            company="Patterson Companies (Fortune 500 ~16,000 employees)"
             dates="Jul 2023 — Aug 2025"
           >
             <template #tech>
@@ -565,6 +565,7 @@
               <TechChip icon="logos:dotnet" title=".NET" />
               <TechChip icon="logos:azure-icon" title="Azure" />
               <TechChip icon="logos:docker-icon" title="Docker" />
+              <TechChip icon="simple-icons:terraform" title="Terraform" />
               <TechChip icon="logos:typescript-icon" title="TypeScript" />
               <TechChip icon="heroicons:circle-stack" title="SQL" />
               <TechChip icon="simple-icons:nx" title="Nx Workspaces" />
