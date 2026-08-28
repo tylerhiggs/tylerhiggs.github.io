@@ -31,6 +31,15 @@
           <UIcon name="heroicons:book-open" size="16" />
           Help Docs
         </a>
+        <a
+          href="https://apps.apple.com/us/app/eave-easy-home-inspections/id6789208001"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-4 py-2 bg-gray-900 hover:bg-gray-800 hover:scale-105 text-white rounded-full text-sm font-medium transition-colors"
+        >
+          <UIcon name="mdi:apple" size="16" />
+          App Store
+        </a>
       </div>
       <div class="flex flex-wrap gap-2 mt-4 mb-6">
         <TechChip icon="logos:nuxt-icon" title="Nuxt" />
@@ -586,8 +595,20 @@
           navigator built for one-thumb use, and the same aggressive autosave as
           desktop. On top of that, I built a native iOS app in Swift for field
           use, with things a web app can't do as well, like one-tap turn-by-turn
-          directions to the property via Maps.
+          directions to the property via Maps. The app is
+          <strong>live on the App Store</strong>.
         </p>
+        <div class="flex flex-wrap gap-3 mb-6">
+          <a
+            href="https://apps.apple.com/us/app/eave-easy-home-inspections/id6789208001"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-4 py-2 bg-gray-900 hover:bg-gray-800 hover:scale-105 text-white rounded-full text-sm font-medium transition-colors"
+          >
+            <UIcon name="mdi:apple" size="16" />
+            Download on the App Store
+          </a>
+        </div>
         <div class="flex items-center">
           <NuxtPicture
             class="w-full rounded-lg my-4"

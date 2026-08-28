@@ -111,6 +111,15 @@
                 <UIcon name="heroicons:book-open" size="16" />
                 Help Docs
               </a>
+              <a
+                href="https://apps.apple.com/us/app/eave-easy-home-inspections/id6789208001"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex z-20 items-center gap-2 px-4 py-2 bg-gray-900 hover:bg-gray-800 hover:scale-105 text-white rounded-full text-sm font-medium transition-colors"
+              >
+                <UIcon name="mdi:apple" size="16" />
+                App Store
+              </a>
             </div>
             <div class="flex flex-wrap gap-2 mt-4">
               <TechChip icon="logos:nuxt-icon" title="Nuxt" />
@@ -152,8 +161,8 @@
                   self-scheduling and free repair-request generation for buyer's
                   agents, and run their business — including multi-user
                   organizations and Stripe subscription billing — from one app.
-                  A native Swift iOS app supports fast, offline-friendly data
-                  capture in the field.
+                  A native Swift iOS app, live on the App Store, supports fast,
+                  offline-friendly data capture in the field.
                 </p>
               </div>
             </div>
