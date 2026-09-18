@@ -175,6 +175,14 @@
 import { useElementVisibility } from "@vueuse/core";
 import type { Item } from "~/types";
 
+usePageSeo({
+  title: "Kendo CSS Utilities Cheat Sheet | Tyler Higgs",
+  description:
+    "A searchable, copy-to-clipboard cheat sheet for Kendo CSS utility classes, built to replace slow, hard-to-search official docs.",
+  path: "/kendo",
+  image: "/og/kendo.png",
+});
+
 const positions = [
   {
     text: "k-d-flex",

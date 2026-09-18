@@ -364,10 +364,11 @@ const outlineItems = computed(
     ] as Item[]
 );
 
-const title = "Single-GPU Gated Shape CNN - Tyler Higgs";
-const description =
-  "An MIT computer vision final project: reimplementing the Gated Shape CNN with a ResNet-18 backbone so it trains on a single GPU, and testing whether connecting the shape stream back into the regular stream improves semantic segmentation.";
-
-useSeoMeta({ title, description });
-useHead({ title });
+usePageSeo({
+  title: "Single-GPU Gated Shape CNN | Tyler Higgs",
+  description:
+    "An MIT computer vision final project: reimplementing the Gated Shape CNN with a ResNet-18 backbone so it trains on a single GPU, and testing whether connecting the shape stream back into the regular stream improves semantic segmentation.",
+  path: "/segmentation",
+  image: "/og/segmentation.png",
+});
 </script>

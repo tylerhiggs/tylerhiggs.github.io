@@ -382,6 +382,14 @@
 import { useElementVisibility } from "@vueuse/core";
 import type { Item } from "~/types";
 
+usePageSeo({
+  title: "Sudoku | Tyler Higgs",
+  description:
+    "A fast, ad-free Sudoku web app with move highlighting, undo/redo, and offline play via IndexedDB, built with Angular and a Rust puzzle generator.",
+  path: "/sudoku",
+  image: "/og/sudoku.png",
+});
+
 const positions = [
   { left: "5%", top: "10%" },
   { right: "8%", top: "15%" },

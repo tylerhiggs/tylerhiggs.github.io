@@ -1,20 +1,12 @@
 <script setup lang="ts">
 import { useElementVisibility } from "@vueuse/core";
 import type { Item } from "~/types";
-useHead({
-  title: "Tyler Higgs - Extended Markdown Editor",
-});
-definePageMeta({
-  title: "Tyler Higgs - Extended Markdown Editor",
-  ogTitle: "Tyler Higgs - Extended Markdown Editor",
+usePageSeo({
+  title: "Extended Markdown Editor | Tyler Higgs",
   description:
-    "A markdown editor with extended features like autosave, live preview, and public sharing, built with Nuxt 3 and Tailwind CSS.",
-  ogDescription:
-    "A markdown editor with extended features like autosave, live preview, and public sharing, built with Nuxt 3 and Tailwind CSS.",
-  ogImage: "/md-preview.png",
-  keywords:
-    "markdown editor, nuxt, vue, drizzle orm, sqlite, oauth, tailwind css, typescript, cloudflare, ssr, seo, Tyler Higgs",
-  author: "Tyler Higgs",
+    "An extended markdown editor with autosave, live preview, and public sharing, built with Nuxt, Drizzle ORM, and Tailwind CSS.",
+  path: "/md",
+  image: "/og/md.png",
 });
 const journeySection = useTemplateRef("journeySection");
 const version1Section = useTemplateRef("version1");

@@ -762,12 +762,13 @@
 import { useElementVisibility } from "@vueuse/core";
 import type { Item } from "~/types";
 
-useSeoMeta({
-  title: "Eave - Software for Home Inspectors",
+usePageSeo({
+  title: "Eave - Software for Home Inspectors | Tyler Higgs",
   description:
     "A solo SaaS product for home inspectors: custom templates, AI template import with Claude, an automated warnings engine, e-signed agreements, Stripe Connect payments, client scheduling, repair requests, and a native iOS app.",
+  path: "/eave-inspect",
+  image: "/og/eave-inspect.png",
 });
-useHead({ title: "Eave - Software for Home Inspectors" });
 
 const templatesSection = useTemplateRef("templates");
 const templateImportSection = useTemplateRef("templateImport");

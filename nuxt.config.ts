@@ -8,6 +8,13 @@ export default defineNuxtConfig({
       htmlAttrs: {
         lang: "en",
       },
+      meta: [
+        {
+          name: "description",
+          content:
+            "Tyler Higgs is a full stack software engineer and MIT CS graduate. Portfolio featuring Eave home inspection software, an extended markdown editor, Sudoku, and more.",
+        },
+      ],
       link: [
         {
           rel: "icon",

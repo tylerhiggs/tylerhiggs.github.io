@@ -176,6 +176,14 @@
 import { useElementVisibility } from "@vueuse/core";
 import type { Item } from "~/types";
 
+usePageSeo({
+  title: "Mortgage & Rent Retirement Calculator | Tyler Higgs",
+  description:
+    "A rent-vs-buy calculator that models mortgage costs, investment growth, and retirement outcomes to help you decide whether renting or buying builds more long-term wealth.",
+  path: "/calculator",
+  image: "/og/calculator.png",
+});
+
 const positions = [
   { left: "5%", top: "10%" },
   { right: "8%", top: "15%" },

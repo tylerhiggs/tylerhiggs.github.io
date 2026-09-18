@@ -698,20 +698,33 @@
 </template>
 
 <script setup lang="ts">
-definePageMeta({
+usePageSeo({
   title: "Tyler Higgs - Software Engineer",
   description:
-    "Tyler Higgs is a full stack software engineer specializing in building web applications with a focus on performance, accessibility, and user experience.",
-  meta: [
+    "Tyler Higgs is a full stack software engineer and MIT CS graduate. Portfolio featuring Eave home inspection software, an extended markdown editor, Sudoku, and more.",
+  path: "/",
+  image: "/og/home.png",
+});
+
+useHead({
+  script: [
     {
-      name: "description",
-      content:
-        "Tyler Higgs is a full stack software engineer specializing in building web applications with a focus on performance, accessibility, and user experience.",
-    },
-    {
-      name: "keywords",
-      content:
-        "Tyler Higgs, Software Engineer, Full Stack Developer, Web Developer, Nuxt, Vue, TypeScript, Tailwind CSS, Cloudflare, Stripe, Swift, iOS, AI, Claude API, Accessibility, SEO, SSR, Computer Vision, PyTorch, Semantic Segmentation, CNN, MIT",
+      type: "application/ld+json",
+      innerHTML: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Person",
+        name: "Tyler Higgs",
+        url: SITE_URL,
+        jobTitle: "Software Engineer",
+        alumniOf: {
+          "@type": "CollegeOrUniversity",
+          name: "Massachusetts Institute of Technology",
+        },
+        sameAs: [
+          "https://github.com/tylerhiggs",
+          "https://www.linkedin.com/in/tylerhiggs/",
+        ],
+      }),
     },
   ],
 });
